@@ -1,0 +1,101 @@
+@import 'dd.breakpoints';
+
+
+ol.featured {
+  @include list-reset();
+  counter-reset: list-counter;
+
+  &.horizontal {
+    @include bp(s) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    width: 100%;
+    @include bp(s) {
+      li {
+        width: 32%;
+        &:not(:nth-child(3)) {
+          margin-right: 2%;
+        }
+      }
+    }
+  }
+
+  li {
+    margin-bottom: 20px;
+    &:before {
+      content: counter(list-counter);
+      counter-increment: list-counter;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: red;
+      line-height: 30px;
+      text-align: center;
+      color: #FFF;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+    .title {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@include print() {
+  ol.featured {
+    li {
+      &:before {
+        border: 1px solid #333;
+      }
+    }
+  }
+}
+
+dt {
+  &:after {
+    content: ': ';
+  }
+}
+dd, dt {
+  display: inline;
+}
+dd + dt{
+  &:before {
+    content: "\A";
+    white-space: pre;
+  }
+}
+dd + dd {
+  &:before {
+    content: ', ';
+  // font-weight: normal;
+  }
+}
+
+$total-items : 3;
+
+ol,ul {
+  &.animated {
+    overflow: hidden;
+    > li {
+      animation: fadeIn 0.5s linear;
+      animation-fill-mode: both;
+      position: relative;
+    }
+
+    @for $i from 1 through $total-items {
+      > li:nth-child(#{$i}) {
+        animation-delay: .25s * $i;
+      }
+    }
+
+    > li:nth-child(n + #{$total-items}) {
+      animation-delay: ($total-items + 1) * .25s;
+      animation-duration: 0s;
+    }
+  }
+}

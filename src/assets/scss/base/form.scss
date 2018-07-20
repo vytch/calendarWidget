@@ -1,0 +1,27 @@
+input {
+  &.error{
+    &:empty {
+      display: block;
+    }
+  }
+}
+.error-summary {
+  margin-bottom: 20px;
+}
+
+.error-summary span{
+  padding: 10px;
+  background: #FFF8F8;
+  border: 1px solid red;
+  display: block;
+  margin-bottom: 10px;
+  color: #ec1a29;
+
+  label {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &:empty {
+    display: none;
+  }
+}

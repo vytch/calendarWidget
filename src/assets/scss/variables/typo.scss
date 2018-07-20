@@ -1,0 +1,13 @@
+$BASE_FONT: 16px;
+
+@function size($size) {
+  $remSize: $size / $BASE_FONT;
+  @return #{$remSize}rem;
+}
+
+@mixin typo() {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    @content;
+  }
+}

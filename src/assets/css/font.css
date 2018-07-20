@@ -1,0 +1,57 @@
+// FONT AWESOME for icons
+
+@font-face {
+    font-family:"fontAwesome";
+    src: url('../fonts/fa-regular-400.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:"icomoon";
+    src: url('../fonts/icomoon-fs.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:"fontAwesome";
+    src: url('../fonts/fontawesome-webfont.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+// Standard fonts per theme.
+
+@font-face {
+  font-family:'ProximaNovaExtraCondens1529447';
+  src: url('../fonts/ProximaNovaExtraCondens.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'VolkswagenSerial';
+  src: url('../fonts/VolkswagenSerial-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'FuturaStd';
+  src: url('../fonts/FuturaStd-Book.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'FuturaBoldBT';
+  src: url('../fonts/FuturaStd-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'FuturaStdBoldCondensed';
+  src: url('../fonts/FuturaStd-CondensedBd.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'FuturaStdBoldCondensed';
+  src: url('../fonts/FuturaStd-Condensed.ttf');
+  font-weight: bold;
+}

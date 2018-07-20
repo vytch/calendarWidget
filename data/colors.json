@@ -1,0 +1,13 @@
+{
+  "white": "#FFF",
+  "black": "#000",
+  "primary": "#0099CC",
+  "secondary": "#66CCFF",
+  "tertiary": "#003399",
+  "footer": "#003399",
+  "list-separator": "#d1d3d4",
+  "input-border": "#d1d3d4",
+  "border": "#E4F0F8",
+  "dark-font": "#F7F7F7",
+  "dark-grey": "#585858"
+}

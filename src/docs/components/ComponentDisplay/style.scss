@@ -1,0 +1,34 @@
+.component-display{
+  margin-bottom: 50px;
+}
+.component-display-showcase {
+  padding: 10px;
+  background: #ccc;
+  border-bottom: none;
+  margin-top: 20px;
+  .tab-content .tab-pane {
+    background: #FFF;
+  }
+
+  .component-display-showcase-inner {
+    padding: 10px;
+    background: #FFF;
+    margin-bottom: 10px;
+  }
+}
+pre {
+  padding: 0;
+  border-radius: 0;
+}
+
+.announce{
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 10px;
+  background: #ccc;
+}
+
+.component-display-themeable {
+  margin-bottom: 20px;
+}

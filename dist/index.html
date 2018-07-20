@@ -1,0 +1,228 @@
+<!doctype html><html lang="en">
+  <head>
+    <title>
+      Revium static site
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link href="/asset/doc/main-one.css" rel="stylesheet"/>
+    <link href="/asset/project/app-fed.css" rel="stylesheet"/>
+    <link href="/asset/doc/doc-fed.css" rel="stylesheet"/>
+    <link href="/asset/project/libs-fed.css" rel="stylesheet"/>
+    <link href="/asset/doc/previewer-fed.css" rel="stylesheet"/>
+    <link href="/asset/project/main-project.css" rel="stylesheet"/>
+    <link href="/asset/project/font.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="styleguide-wrapper">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              Home
+            </a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li class="">
+              <a href="/demo">
+                Demo
+              </a>
+            </li>
+            <li class="">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                Styleguide
+                <span class="caret">
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+            <li class="">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                Templates
+                <span class="caret">
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div>
+        <div>
+          <div>
+            <h1 id="templating-with-yeoman-static-site">
+              Templating with Yeoman static site
+            </h1>
+            <h2 id="description">
+              Description
+            </h2>
+            <p>
+              The static site is generated using React components.
+It has been designed to help the FED to develop, test and document.
+            </p>
+            <h2 id="usage">
+              Usage
+            </h2>
+            <h3 id="installation">
+              Installation
+            </h3>
+            <p>
+              Once the project checked out:
+            </p>
+            <p>
+              <code>
+                npm install
+              </code>
+            </p>
+            <h3 id="run-the-site">
+              Run the site
+            </h3>
+            <p>
+              <em>
+                The site has two webpack processes. One for the FED and one for the HTML generation.
+              </em>
+            </p>
+            <p>
+              <code>
+                npm run start
+              </code>
+            </p>
+            <h3 id="build-the-site">
+              Build the site
+            </h3>
+            <p>
+              <code>
+                npm run build
+              </code>
+            </p>
+            <h3 id="run-the-unit-tests-">
+              Run the unit-tests.
+            </h3>
+            <p>
+              <code>
+                npm run test
+              </code>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h1 id="code-generator">
+              Code generator
+            </h1>
+            <p>
+              Ideally, we would like all projexts to be set up the same way.
+Within each project, we would like all the parts to also be the same.
+            </p>
+            <p>
+              This way we have only one approach to learn.
+            </p>
+            <p>
+              We use code scaffolding technics to help saving time and also to get that consistency happening.
+            </p>
+            <p>
+              This project uses 2 code generators.
+            </p>
+            <p>
+              The second one is called plop. It is used to create element within each project.
+            </p>
+            <h2 id="creating-new-components-using-plop">
+              Creating new components using plop
+            </h2>
+            <h3 id="using-plop-">
+              Using plop:
+            </h3>
+            <pre>
+              <code>
+                  npm run plop
+
+              </code>
+            </pre>
+            <p>
+              This will call plop inside your project.
+            </p>
+            <p>
+              Plop will then ask you the kind of element you want to create:
+            </p>
+            <ul>
+              <li>
+                Page - Add a page template to the app
+              </li>
+              <li>
+                Styleguide - Add a component to the app
+              </li>
+              <li>
+                Partial - Add a partial to the app
+              </li>
+              <li>
+                FED react module - Add a component to the app
+              </li>
+              <li>
+                FED react component - Add a component to the app
+              </li>
+            </ul>
+            <p>
+              Plop will then ask where you wnt the new component to be created.
+            </p>
+            <blockquote>
+              <p>
+                When creating a new styleguide page or a static page, you might have to restart your server. The resson is that the file listener, reponsiblke for creating the new HTML page,  does not yet know that a new file has been created. Restarting the server will ensure that your file system is re-scanned.
+              </p>
+            </blockquote>
+            <h3 id="types-of-component">
+              Types of component
+            </h3>
+            <h4 id="page">
+              Page
+            </h4>
+            <p>
+              This is a normal page that mocks a page on the website.
+It is a static representation of the site you are working on (ex: homepage, landing page, general page, contact us etc.)
+            </p>
+            <h4 id="styleguide">
+              Styleguide
+            </h4>
+            <p>
+              This is a styleguide page.
+Ideally, any new component should have some sort of styleguide page to stage it.
+If you use a styleguide for each of your component, then it will ensure that your component is documented.
+            </p>
+            <h4 id="partial">
+              Partial
+            </h4>
+            <p>
+              A partial is an HTML component. It has an associated sass file.
+All your component should be a re-usable partial.
+            </p>
+            <h4 id="fed-react-module">
+              FED react module
+            </h4>
+            <p>
+              This is a module that will be run by your browsers only.
+You use that for building webapps.
+            </p>
+            <h4 id="fed-react-component">
+              FED react component
+            </h4>
+            <p>
+              This is a partial for front end code only.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/asset/common.js">
+    </script>
+    <script src="/asset/doc/doc.js">
+    </script>
+    <script src="/asset/project/libs.js">
+    </script>
+  </body>
+</html>

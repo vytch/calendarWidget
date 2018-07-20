@@ -1,0 +1,30 @@
+{
+    "routes": [
+        { "path": "/", "name": "Home", "params": { "layout": "Home" } },
+        { "path": "/demo", "name": "Demo", "params": { "layout": "Demo" } },
+        {
+            "path": "/styleguide",
+            "name": "Styleguide",
+            "params": { "layout": "Styleguide" },
+            "childRoutes": [
+                {
+                    "path": "/styleguide/:component",
+                    "name": "Component",
+                    "params": { "layout": "Styleguide", "componentList": [] }
+                }
+            ]
+        },
+        {
+            "path": "/templates",
+            "name": "Templates",
+            "params": { "layout": "Template" },
+            "childRoutes": [
+                {
+                    "path": "/templates/:template",
+                    "name": "Template",
+                    "params": { "componentList": [] }
+                }
+            ]
+        }
+    ]
+}

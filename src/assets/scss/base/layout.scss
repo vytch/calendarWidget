@@ -1,0 +1,24 @@
+@import 'dd.breakpoints';
+@import '../mixins/print';
+
+.rv-full-width {
+  width: 100vw;
+  position: relative;
+  left:50%;
+  right: 50%;
+  margin:0 -50vw;
+}
+@include print() {
+  .rv-full-width {
+    width: 100%;
+    position: relative;
+    left:0;
+    right: 0;
+    margin:0;
+  }
+}
+
+.rv-fixed-width {
+  max-width: 940px;
+  margin: 0 auto;
+}

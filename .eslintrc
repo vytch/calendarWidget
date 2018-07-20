@@ -1,0 +1,48 @@
+{
+    "extends": "eslint-config-deloitte-react",
+    "parser": 'babel-eslint',
+    "plugins": [
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "createClass": "createReactClass", // Regex for Component Factory to use, default to "createReactClass"
+            "pragma": "React",  // Pragma to use, default to "React"
+            "version": "15.0", // React version, default to the latest React stable release
+            "flowVersion": "0.53" // Flow version
+        },
+        "import/resolver": {
+            "webpack": {
+              "config": "webpack.config.js"
+            }
+        },
+        "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the propTypes object, such as `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "jsx-a11y/href-no-hash": "off",
+        "import/prefer-default-export":0,
+        "react/prefer-stateless-function": "off",
+        "indent": ["error", 2],
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/no-multi-comp": "off",
+        "react/jsx-indent": [2, 2],
+        "react/jsx-indent-props": [2, 2],
+        "jsx-a11y/label-has-for": [ 2, {
+            "components": [ "Label" ],
+            "required": {
+                "some": [ "nesting", "id" ]
+            },
+            "allowChildren": false,
+        }],
+        "react/jsx-no-bind": [0, {
+          "allowArrowFunctions": true,
+        }],
+    }
+}

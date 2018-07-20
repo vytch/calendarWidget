@@ -1,0 +1,19 @@
+// ==========================================================================
+// CLEARFIX
+// ==========================================================================
+
+@mixin clearfix-micro() {
+  &::before,
+  &::after {
+    content: " ";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin cf() {
+  @include clearfix-micro();
+}
