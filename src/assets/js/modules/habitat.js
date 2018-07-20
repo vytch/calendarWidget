@@ -12,7 +12,7 @@ class App extends ReactHabitat.Bootstrapper {
 
     // Register a component
     // [PLOP-MARKER-REGISTRY]
-builder.register(Event).as('Event');
+    builder.register(Event).as('Event');
 
     // Finally, set the container
     this.setContainer(builder.build());

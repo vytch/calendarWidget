@@ -22,7 +22,7 @@
                 {
                     "path": "/templates/:template",
                     "name": "Template",
-                    "params": { "componentList": [] }
+                    "params": { "componentList": [ "CalendarPage" ] }
                 }
             ]
         }
