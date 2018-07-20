@@ -1,0 +1,29 @@
+.event-list-type {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+  li {
+    overflow: hidden;
+    width: 5px;
+    height: 5px;
+    display: block;
+    text-indent: -1000px;
+    border-radius: 50%;
+    &[data-type] {
+      background: #CCC;
+    }
+    &[data-type="typeA"] {
+      background: red;
+    }
+    &[data-type="typeB"] {
+      background: blue;
+    }
+    &[data-type="typeC"] {
+      background: orange;
+    }
+    &[data-type="typeD"] {
+      background: green;
+    }
+  }
+}

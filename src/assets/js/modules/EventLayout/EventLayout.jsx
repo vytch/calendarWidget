@@ -11,11 +11,9 @@ class EventLayout extends React.Component {
         {this.props.children}
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/demo/hello">Demo hello</Link></li>
-          <li><Link to="/demo/world">Demo world</Link></li>
+          <li><Link to="/demo/20180712">Demo 2018 07 13</Link></li>
+          <li><Link to="/demo/20180713">Demo 2018 07 12</Link></li>
         </ul>
-
-
       </div>
     );
   }

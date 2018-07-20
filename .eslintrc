@@ -24,6 +24,7 @@
         }
     },
     "rules": {
+        "react/jsx-filename-extension": "off",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         "jsx-a11y/href-no-hash": "off",
