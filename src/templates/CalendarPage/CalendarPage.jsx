@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TestHabital from 'core-partials/display/molecules/TestHabital';
 
 /** This is the CalendarPage component. */
 class CalendarPage extends React.Component {
   render() {
     return (
-      <div>CalendarPage</div>
+      <TestHabital
+        component="Event"
+      />
     );
   }
 }

@@ -1,6 +1,7 @@
 import ReactHabitat from 'react-habitat';
 
 // [PLOP-MARKER-IMPORT]
+import EventLayout from './EventLayout';
 import Event from './Event';
 
 class App extends ReactHabitat.Bootstrapper {
@@ -12,6 +13,7 @@ class App extends ReactHabitat.Bootstrapper {
 
     // Register a component
     // [PLOP-MARKER-REGISTRY]
+    builder.register(EventLayout).as('EventLayout');
     builder.register(Event).as('Event');
 
     // Finally, set the container
