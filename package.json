@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm-run-all gen:docs route:upd",
     "start": "npm-run-all --parallel fed bed route:upd-watch gen:docs-watch",
-    "fed": "webpack-dev-server --content-base dist/ --config webpack.config.fed.js",
+    "fed": "webpack-dev-server --content-base dist/ --config webpack.config.fed.js --host 0.0.0.0 --port 4444",
     "route:upd": "node scripts/generatePageData.js",
     "gen:docs-watch": "npm run gen:docs -- --watch",
     "gen:docs": "node scripts/generateComponentData.js",

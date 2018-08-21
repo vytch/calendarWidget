@@ -18,7 +18,6 @@ class EventLayout extends React.Component {
     );
   }
 }
-
 EventLayout.defaultProps = {
 };
 
