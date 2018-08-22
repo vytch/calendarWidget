@@ -45,5 +45,6 @@
         "react/jsx-no-bind": [0, {
           "allowArrowFunctions": true,
         }],
+        "linebreak-style": 0
     }
 }

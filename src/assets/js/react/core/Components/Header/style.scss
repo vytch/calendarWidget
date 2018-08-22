@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: $header-bg;
+    color: #fff;
+    text-align: center;
+    
+    h1{
+        margin: auto;
+        padding: 60px 0;
+        font-weight: normal;
+        font-family: 'Avenir', helvetica, arial, sans-serif;
+        font-size: 45px;
+        color: #fff;
+    }
+
+    &-divider{
+        width: 100%;
+        
+        svg{
+            display: block;
+            width: 100vw;
+            fill: $cream;
+        }
+    }
+}

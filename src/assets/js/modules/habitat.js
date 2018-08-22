@@ -1,6 +1,7 @@
 import ReactHabitat from 'react-habitat';
 
 // [PLOP-MARKER-IMPORT]
+import LandingPage from './LandingPage';
 import EventLayout from './EventLayout';
 import Event from './Event';
 
@@ -13,6 +14,7 @@ class App extends ReactHabitat.Bootstrapper {
 
     // Register a component
     // [PLOP-MARKER-REGISTRY]
+    builder.register(LandingPage).as('LandingPage');
     builder.register(EventLayout).as('EventLayout');
     builder.register(Event).as('Event');
 

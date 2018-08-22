@@ -1,4 +1,4 @@
-import LandingPage from 'core-partials/display/templates/LandingPage';
+import LandingPage from 'fed-modules/LandingPage';
 import DayView from 'core-partials/display/templates/DayView';
 import routeData from 'data/routeData.json';
 

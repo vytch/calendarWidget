@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link } from 'react-router';
+import { Link } from 'react-router';
+import Header from '../../react/core/Components/Header';
 import './style.scss';
 
 /** This is the EventLayout component. */
@@ -8,7 +9,12 @@ class EventLayout extends React.Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <Header />
+
+        <main className="wrapper">
+          {this.props.children}
+        </main>
+
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/demo/20180712">Demo 2018 07 13</Link></li>

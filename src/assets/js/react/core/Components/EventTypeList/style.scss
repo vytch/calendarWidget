@@ -1,0 +1,35 @@
+.event-list-type {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    li {
+        overflow: hidden;
+        width: 5px;
+        height: 5px;
+        display: block;
+        text-indent: -1000px;
+        border-radius: 50%;
+        
+        &[data-type] {
+            background: transparent;
+        }
+        
+        &[data-type="JS"] {
+            background: $indicator-pink;
+        }
+        
+        &[data-type="JSS"] {
+            background: $indicator-orange;
+        }
+        
+        &[data-type="MS"] {
+            background: $indicator-green;
+        }
+        
+        &[data-type="SS"] {
+            background: $indicator-blue;
+        }
+    }
+}

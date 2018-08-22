@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LandingPage from 'core-partials/display/templates/LandingPage';
+import LandingPage from 'fed-modules/LandingPage';
 import DayView from 'core-partials/display/templates/DayView';
 import EventLayout from 'react-module/EventLayout';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';

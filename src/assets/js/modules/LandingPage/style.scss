@@ -1,0 +1,10 @@
+.col-2 {
+    display: flex;
+    flex-flow: row wrap;
+    section {
+        width: calc(100vw / 12 * 4);
+        &:last-child {
+            margin-left: auto;
+        }
+    }
+}

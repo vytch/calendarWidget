@@ -1,0 +1,40 @@
+.Calendar + .legend{ margin-top: 1rem; }
+
+.legend{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    
+    &-item{
+        $indicatorSize: 6px;
+        padding: 0.5rem 1rem;
+
+        &:before{
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: $indicatorSize;
+            height: $indicatorSize;
+            border-radius: 100%;
+            margin-right: $indicatorSize;
+            transform: translateY(-2px);
+        }
+
+        &[data-type="JS"]:before{
+            background: $indicator-pink;
+        }
+        
+        &[data-type="JSS"]:before{
+            background: $indicator-orange;
+        }
+        
+        &[data-type="MS"]:before{
+            background: $indicator-green;
+        }
+        
+        &[data-type="SS"]:before{
+            background: $indicator-blue;
+        }
+    }
+}
