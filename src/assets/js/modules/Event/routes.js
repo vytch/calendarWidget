@@ -1,4 +1,4 @@
-import LandingPage from 'fed-modules/LandingPage';
+import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import routeData from 'data/routeData.json';
 
@@ -7,7 +7,7 @@ const routes = {
     {
       path: '/',
       name: 'Home',
-      component: LandingPage,
+      component: PageLanding,
     },
     {
       path: '/demo',

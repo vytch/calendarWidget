@@ -22,6 +22,7 @@ class DayView extends React.Component {
   }
 
   handleCalendarView() {
+    // switch from Calendar to search fields
     return this.props.switchView();
   }
 

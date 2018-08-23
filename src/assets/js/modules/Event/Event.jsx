@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LandingPage from 'fed-modules/LandingPage';
+import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import EventLayout from 'react-module/EventLayout';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
@@ -12,9 +12,9 @@ class Event extends React.Component {
   render() {
     return (
       <div>
-        <Router history={hashHistory}>
+        <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
           <Route path="/" component={EventLayout}>
-            <IndexRoute component={LandingPage} />
+            <IndexRoute component={PageLanding} />
             <Route path="demo/:id" component={DayView} />
           </Route>
         </Router>

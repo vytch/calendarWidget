@@ -20,7 +20,6 @@ class LandingPage extends React.Component {
 
         <section>
           <CalendarContainer />
-          {/* <DayView /> */}
         </section>
       </div>
     );

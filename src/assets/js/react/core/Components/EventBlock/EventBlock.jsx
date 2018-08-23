@@ -12,7 +12,7 @@ class EventBlock extends React.PureComponent {
       return (
         <li key={`e-${this.props.id}-${i += 1}-${tag}`} className="event-tag" data-type={tag}>
           <div className="event-tag-indicator" />
-          {tag}
+          { tag }
         </li>
       );
     });

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Name of the event 1",
+    "start": "2018071111:00",
+    "end": "",
+    "allDay": true,
+    "location": "Location Name",
+    "categories": ["Category name", "Category name", "Category name"],
+    "tags": ["JS", "JSS", "MS", "SS"],
+    "important": false
+  },
+  {
+    "id": 2,
+    "name": "Name of the event 2",
+    "start": "201807129:00",
+    "end": "2018071210:00:",
+    "allDay": false,
+    "location": "Location Name",
+    "categories": ["Category name", "Category name", "Category name"],
+    "tags": ["JS", "SS"],
+    "important": true
+  },
+  {
+    "id": 3,
+    "name": "Name of the event 3",
+    "start": "2018071211:00",
+    "end": "",
+    "allDay": true,
+    "location": "Location Name",
+    "categories": ["Category name", "Category name", "Category name"],
+    "tags": ["JS", "JSS", "SS"],
+    "important": false
+  },
+  {
+    "id": 4,
+    "name": "Name of the event 4",
+    "start": "2018071311:00",
+    "end": "",
+    "allDay": true,
+    "location": "Location Name",
+    "categories": ["Category name", "Category name", "Category name"],
+    "tags": ["JSS"],
+    "important": false
+  },
+  {
+    "id": 5,
+    "name": "Name of the event 5",
+    "start": "2018071311:00",
+    "end": "",
+    "allDay": true,
+    "location": "Location Name",
+    "categories": ["Category name", "Category name", "Category name"],
+    "tags": ["MS", "SS"],
+    "important": false
+  }
+]

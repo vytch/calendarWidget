@@ -93,18 +93,6 @@
         &--current{
             color: #d0021b;
         }
-        
-        &:nth-child(7n+1) {
-            // padding-left: 0;
-        }
-        
-        &:nth-child(7n) {
-            // padding-right: 0;
-        }
-        
-        &:nth-child(-n+7) {
-            // border-top: 1px solid #ddd;
-        }
     }
 
     &-actions{
