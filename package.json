@@ -86,12 +86,16 @@
     "react": "^15.1.0",
     "react-calendar-component": "^2.0.0",
     "react-dom": "^15.1.0",
+    "react-redux": "^5.0.7",
     "react-habitat": "^0.6.1",
     "react-html-id": "^0.1.2",
     "react-render-html": "^0.6.0",
     "react-router": "^2.4.1",
     "react-router-to-array": "^0.1.2",
     "react-slotted": "^0.1.0",
+    "redux": "^4.0.0",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-thunk": "^2.3.0",
     "xml-beautifier": "^0.3.0"
   },
   "jest": {
