@@ -7,7 +7,7 @@ class CheckboxGroup extends React.PureComponent {
     const checkboxOptions = this.props.options.map(({ name, value, label, checked }) => {
       return (
         <label key={`${name}+${value}`}>
-          <input name={name} value={value} type="checkbox" checked={checked} />
+          <input name={name} value={value} type="checkbox" defaultChecked={checked} />
           <span className="icon"></span> { label }
         </label>
       );

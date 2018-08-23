@@ -10,15 +10,16 @@ import eventData from './eventData.json';
 
 /** This is the PageDayView component. */
 class PageDayView extends React.Component {
-  componentDidMount = () => {
-    // const filteredEvents = eventData.filter()
-    console.log(moment(eventData.start).format('DD MM YYYY HH:MM'));
-  }
-
   render() {
+    const todaysEvents = eventData.filter(evnt => {
+      const eventTime = moment(evnt.start).format('YYYYMMDD');
+      const currentDay = moment(this.props.params.id).format('YYYYMMDD');
+
+      return eventTime === currentDay;
+    });
+
     return (
       // TODO:
-      // Make use of calendar routing
       // Calculate school terms
       <div className="view-current-day">
         <header className="align-center">
@@ -26,10 +27,7 @@ class PageDayView extends React.Component {
           <p>Week 22 (Term 3)</p>
         </header>
 
-        { eventData.map(event => {
-          const props = event;
-          return <EventBlock key={`event-${event.id}`} {...props} />;
-        }) }
+        { todaysEvents.map(e => <EventBlock key={`event-${e.id}`} {...e} />) }
 
         <DayPagination {...this.props} />
       </div>
