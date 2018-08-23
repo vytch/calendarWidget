@@ -49,6 +49,7 @@
         &-currentDate{
             font-size: 20px;
             line-height: inherit;
+            color: $black;
         }
     }
 
@@ -77,6 +78,12 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        font-weight: 500;
+        transition: color 0.25s ease;
+
+        &:hover{
+            color: lighten($black, 55%);
+        }
         
         &.nextMonth,
         &.prevMonth {
@@ -104,17 +111,6 @@
         margin-top: 1rem;
         display: flex;
         justify-content: space-between;
-        
-        button{
-            background: $primary;
-            color: $white;
-            border: none;
-            border-radius: 4px;
-            padding: 8px 15px;
-            text-transform: uppercase;
-            font-size: 12px;
-            cursor: pointer;
-        }
     }
 }
 

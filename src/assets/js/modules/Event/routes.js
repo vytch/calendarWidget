@@ -1,5 +1,5 @@
 import LandingPage from 'fed-modules/LandingPage';
-import DayView from 'core-partials/display/templates/DayView';
+import DayView from 'fed-modules/PageDayView';
 import routeData from 'data/routeData.json';
 
 const routes = {

@@ -1,0 +1,76 @@
+[type="checkbox"],
+[type="radio"] {
+    position: absolute;
+    left: -10000px;
+
+    + .icon {
+        $size: 18px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        width: $size;
+        height: $size;
+        border: 2px solid currentColor;
+        border-radius: 3px;
+
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            width: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity 0.2s ease-in;
+        }
+
+        &:before {
+            height: 4px;
+            transform: translate(-3px, 1px) rotate(-45deg);
+        }
+
+        &:after {
+            height: 10px;
+            transform: translate(2px, 0) rotate(45deg);
+        }
+    }
+
+    &[value="JS"]+.icon { color: $checkbox-pink }
+    &[value="JSS"]+.icon { color: $checkbox-orange }
+    &[value="MS"]+.icon { color: $checkbox-green }
+    &[value="SS"]+.icon { color: $checkbox-blue }
+
+    &:checked+.icon {
+        &:before,
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.checkbox {
+    &-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &-options {
+        flex: 1;
+        margin-left: 2rem;
+        width: auto;
+
+        label {
+            display: block;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        label + label {
+            margin-top: 1rem;
+        }
+    }
+}

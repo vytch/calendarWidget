@@ -6,12 +6,18 @@
   padding: 0;
 }
 
+$avenir: 'Avenir LT Std', Arial, Helvetica, sans-serif;
+
 body {
   font-family: sans-serif;
   font-size: 16px;
   color: #444;
   background: $cream;
-  font-family: 'Avenir', Arial, Helvetica, sans-serif;
+}
+
+body,
+main.wrapper{
+  font-family: $avenir;
 }
 
 main.wrapper {
@@ -26,7 +32,7 @@ h4,
 h5,
 h6 {
   color: $title-color;
-  font-weight: 400;
+  font-weight: 900;
 }
 
 h2 {
@@ -37,4 +43,48 @@ h2 {
 h3 {
   font-size: 22px;
   line-height: 29px;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: local('Avenir LT Std 55 Roman'), local('AvenirLTStd-Roman'), 
+        url('../../../fonts/AvenirLTStd-Roman.woff2') format('woff2'), 
+        url('../../../fonts/AvenirLTStd-Roman.woff') format('woff'), 
+        url('../../../fonts/AvenirLTStd-Roman.ttf') format('truetype'), 
+        url('../../../fonts/AvenirLTStd-Roman.svg#AvenirLTStd-Roman') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: local('Avenir LT Std 65 Medium'), local('AvenirLTStd-Medium'), 
+        url('../../../fonts/AvenirLTStd-Medium.woff2') format('woff2'), 
+        url('../../../fonts/AvenirLTStd-Medium.woff') format('woff'), 
+        url('../../../fonts/AvenirLTStd-Medium.ttf') format('truetype'), 
+        url('../../../fonts/AvenirLTStd-Medium.svg#AvenirLTStd-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: local('Avenir LT Std 85 Heavy'), local('AvenirLTStd-Heavy'), 
+        url('../../../fonts/AvenirLTStd-Heavy.woff2') format('woff2'), 
+        url('../../../fonts/AvenirLTStd-Heavy.woff') format('woff'), 
+        url('../../../fonts/AvenirLTStd-Heavy.ttf') format('truetype'), 
+        url('../../../fonts/AvenirLTStd-Heavy.svg#AvenirLTStd-Heavy') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: local('Avenir LT Std 45 Book'), local('AvenirLTStd-Book'), 
+        url('../../../fonts/AvenirLTStd-Book.woff2') format('woff2'), 
+        url('../../../fonts/AvenirLTStd-Book.woff') format('woff'), 
+        url('../../../fonts/AvenirLTStd-Book.ttf') format('truetype'), 
+        url('../../../fonts/AvenirLTStd-Book.svg#AvenirLTStd-Book') format('svg');
+  font-weight: 300;
+  font-style: normal;
 }

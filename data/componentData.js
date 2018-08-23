@@ -1,8 +1,147 @@
 module.exports = [
     {
+        "name": "Button",
+        "description": "This is the Button component.",
+        "props": {
+            "onClick": {
+                "type": { "name": "func" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "() => { }", "computed": false }
+            },
+            "label": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "'Button Label'", "computed": false }
+            },
+            "btnClass": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "children": {
+                "type": {
+                    "name": "union",
+                    "value": [ { "name": "element" }, { "name": "string" } ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the Button component. */\r\nclass Button extends React.PureComponent {\r\n  constructor() {\r\n    super();\r\n    this._handleClick = this.onClick.bind(this);\r\n  }\r\n\r\n  onClick(e) {\r\n    this.props.onClick(e);\r\n  }\r\n\r\n  render() {\r\n    const classes = this.props.btnClass ? ['btn', this.props.btnClass] : ['btn'];\r\n\r\n    return (\r\n      // TODO: Add icons\r\n      <button\r\n        type=\"button\"\r\n        className={classes.join(' ')}\r\n        onClick={this._handleClick}\r\n      >\r\n        { this.props.children }\r\n        { this.props.label }\r\n      </button>\r\n    );\r\n  }\r\n}\r\n\r\nButton.defaultProps = {\r\n  onClick: () => { },\r\n  label: 'Button Label',\r\n  btnClass: null,\r\n  children: null,\r\n};\r\n\r\nButton.propTypes = {\r\n  onClick: PropTypes.func,\r\n  label: PropTypes.string,\r\n  btnClass: PropTypes.string,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.element,\r\n    PropTypes.string,\r\n  ]),\r\n};\r\n\r\nexport default Button;\r\n",
+        "examples": []
+    },
+    {
         "name": "CalendarLegend",
         "description": "This is the CalendarLegend component.",
         "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the CalendarLegend component. */\r\nclass CalendarLegend extends React.PureComponent {\r\n  render() {\r\n    return (\r\n      /*\r\n        TODO\r\n        - Make this an array or object that gets looped through\r\n        - Make abbreviations global so they apply to calendar and event-list-type\r\n        - auto abbreviate legend titles\r\n      */\r\n\r\n      <ul className=\"legend\">\r\n        <li className=\"legend-item\" data-type=\"JS\">Junior School (JS)</li>\r\n        <li className=\"legend-item\" data-type=\"JSS\">Junior Secondary School (JSS)</li>\r\n        <li className=\"legend-item\" data-type=\"MS\">Middle School</li>\r\n        <li className=\"legend-item\" data-type=\"SS\">Senior School</li>\r\n      </ul>\r\n    );\r\n  }\r\n}\r\n\r\nCalendarLegend.defaultProps = {\r\n};\r\n\r\nCalendarLegend.propTypes = {\r\n};\r\n\r\nexport default CalendarLegend;\r\n\r\n",
+        "examples": []
+    },
+    {
+        "name": "CalendarSearch",
+        "description": "This is the CalendarSearch component.",
+        "props": {
+            "switchView": {
+                "type": { "name": "func" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport CheckboxGroup from '../CheckboxGroup';\r\nimport Button from '../Button';\r\nimport IconButton from '../IconButton';\r\nimport './style.scss';\r\n\r\nconst cbOptions = [\r\n  {\r\n    name: 'search-types',\r\n    value: 'JS',\r\n    label: 'Junior School (JS)',\r\n    checked: true,\r\n  },\r\n  {\r\n    name: 'search-types',\r\n    value: 'JSS',\r\n    label: 'Junior Secondary School (JSS)',\r\n    checked: true,\r\n  },\r\n  {\r\n    name: 'search-types',\r\n    value: 'MS',\r\n    label: 'Middle School (JS)',\r\n    checked: true,\r\n  },\r\n  {\r\n    name: 'search-types',\r\n    value: 'SS',\r\n    label: 'Secondary School (JS)',\r\n    checked: true,\r\n  },\r\n];\r\n\r\n/** This is the CalendarSearch component. */\r\nclass CalendarSearch extends React.Component {\r\n  constructor() {\r\n    super();\r\n    this._handleSwitchView = this.handleCalendarView.bind(this);\r\n  }\r\n\r\n  handleCalendarView() {\r\n    return this.props.switchView();\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      <div className=\"calendar-search form\">\r\n        <h3>\r\n          <IconButton onClick={this._handleSwitchView()}>\r\n            <svg x=\"0px\" y=\"0px\" viewBox=\"0 0 18 20\">\r\n              <path\r\n                className=\"svg-icon\"\r\n                d=\"M15.9,2.5c0.5,0,1,0.2,1.3,0.5s0.5,0.8,0.5,1.3v13.8c0,0.5-0.2,1-0.5,1.3S16.4,20,15.9,20H2.1\r\n                c-0.5,0-1-0.2-1.3-0.5s-0.5-0.8-0.5-1.3V4.4c0-0.5,0.2-1,0.5-1.3s0.8-0.5,1.3-0.5H4v-2c0-0.1,0-0.2,0.1-0.3S4.3,0,4.5,0h0.3\r\n                C4.9,0,5,0,5.1,0.1s0.1,0.2,0.1,0.3v2h7.5v-2c0-0.1,0-0.2,0.1-0.3S13.1,0,13.2,0h0.3c0.1,0,0.2,0,0.3,0.1S14,0.3,14,0.5v2H15.9z\r\n                M2.1,3.8c-0.2,0-0.3,0.1-0.4,0.2S1.5,4.2,1.5,4.4v1.9h15V4.4c0-0.2-0.1-0.3-0.2-0.4s-0.3-0.2-0.4-0.2H2.1z M15.9,18.8\r\n                c0.2,0,0.3-0.1,0.4-0.2s0.2-0.3,0.2-0.4V7.5h-15v10.6c0,0.2,0.1,0.3,0.2,0.4s0.3,0.2,0.4,0.2H15.9z M6,12.5c0.1,0,0.2,0,0.3-0.1\r\n                s0.1-0.2,0.1-0.3v-1.6c0-0.1,0-0.2-0.1-0.3S6.2,10,6,10H4.5c-0.1,0-0.2,0-0.3,0.1S4,10.3,4,10.5V12c0,0.1,0,0.2,0.1,0.3\r\n                s0.2,0.1,0.3,0.1H6z M6,16.3c0.1,0,0.2,0,0.3-0.1s0.1-0.2,0.1-0.3v-1.6c0-0.1,0-0.2-0.1-0.3S6.2,13.8,6,13.8H4.5\r\n                c-0.1,0-0.2,0-0.3,0.1S4,14.1,4,14.2v1.6c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1H6z M9.8,12.5c0.1,0,0.2,0,0.3-0.1s0.1-0.2,0.1-0.3\r\n                v-1.6c0-0.1,0-0.2-0.1-0.3S9.9,10,9.8,10H8.2c-0.1,0-0.2,0-0.3,0.1s-0.1,0.2-0.1,0.3V12c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1H9.8z\r\n                M9.8,16.3c0.1,0,0.2,0,0.3-0.1s0.1-0.2,0.1-0.3v-1.6c0-0.1,0-0.2-0.1-0.3s-0.2-0.1-0.3-0.1H8.2c-0.1,0-0.2,0-0.3,0.1\r\n                s-0.1,0.2-0.1,0.3v1.6c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1H9.8z M13.5,12.5c0.1,0,0.2,0,0.3-0.1S14,12.2,14,12v-1.6\r\n                c0-0.1,0-0.2-0.1-0.3S13.7,10,13.5,10H12c-0.1,0-0.2,0-0.3,0.1s-0.1,0.2-0.1,0.3V12c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1H13.5z\r\n                M13.5,16.3c0.1,0,0.2,0,0.3-0.1s0.1-0.2,0.1-0.3v-1.6c0-0.1,0-0.2-0.1-0.3s-0.2-0.1-0.3-0.1H12c-0.1,0-0.2,0-0.3,0.1\r\n                s-0.1,0.2-0.1,0.3v1.6c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1H13.5z\"\r\n              />\r\n            </svg>\r\n          </IconButton>\r\n          Search for events\r\n        </h3>\r\n\r\n        {/* TODO: Create form components */}\r\n        <div className=\"form-group\">\r\n          <label htmlFor=\"search-keywords\">Keywords</label>\r\n          <input id=\"search-keywords\" name=\"search-keywords\" type=\"text\" />\r\n        </div>\r\n\r\n        <CheckboxGroup label={'School'} options={cbOptions} />\r\n\r\n        <div className=\"form-group\">\r\n          <label htmlFor=\"search-category\">Category</label>\r\n          <select name=\"search-category\" id=\"search-category\">\r\n            <option value=\"Option 1\">Option 1</option>\r\n            <option value=\"Option 2\">Option 2</option>\r\n            <option value=\"Option 3\">Option 3</option>\r\n          </select>\r\n        </div>\r\n\r\n        <div className=\"form-group\">\r\n          <label htmlFor=\"search-dates\">Keywords</label>\r\n          {/* TODO: Calculate 20yr range for min max valus */}\r\n          <input type=\"date\" name=\"search-dates\" id=\"search-dates\" />\r\n        </div>\r\n\r\n        <footer className=\"form-actions\">\r\n          <Button label={'Search Events'} />\r\n        </footer>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nCalendarSearch.defaultProps = {\r\n  switchView: null,\r\n};\r\n\r\nCalendarSearch.propTypes = {\r\n  switchView: PropTypes.func,\r\n};\r\n\r\nexport default CalendarSearch;\r\n",
+        "examples": []
+    },
+    {
+        "name": "CheckboxGroup",
+        "description": "This is the CheckboxGroup component.",
+        "props": {
+            "label": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "'Label'", "computed": false }
+            },
+            "options": {
+                "type": { "name": "array" },
+                "required": true,
+                "description": ""
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\n\r\n/** This is the CheckboxGroup component. */\r\nclass CheckboxGroup extends React.PureComponent {\r\n  render() {\r\n    const checkboxOptions = this.props.options.map(({ name, value, label, checked }) => {\r\n      return (\r\n        <label key={`${name}+${value}`}>\r\n          <input name={name} value={value} type=\"checkbox\" checked={checked} />\r\n          <span className=\"icon\"></span> { label }\r\n        </label>\r\n      );\r\n    });\r\n\r\n    return (\r\n      <div className=\"form-group checkbox-group\">\r\n        <p className=\"form-label\">{ this.props.label }</p>\r\n        <div className=\"checkbox-options\">\r\n          {checkboxOptions}\r\n        </div>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nCheckboxGroup.defaultProps = {\r\n  label: 'Label',\r\n};\r\n\r\nCheckboxGroup.propTypes = {\r\n  label: PropTypes.string,\r\n  options: PropTypes.array.isRequired,\r\n};\r\n\r\nexport default CheckboxGroup;\r\n\r\n",
+        "examples": []
+    },
+    {
+        "name": "DayPagination",
+        "description": "This is the DayPagination component.",
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport Button from '../Button';\r\nimport './style.scss';\r\n\r\n/** This is the DayPagination component. */\r\nclass DayPagination extends React.PureComponent {\r\n  render() {\r\n    return (\r\n      <div className=\"footer-pagination\">\r\n        <Button label={'Previous Day'} />\r\n        <Button label={'Next Day'} />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nDayPagination.defaultProps = {\r\n};\r\n\r\nDayPagination.propTypes = {\r\n};\r\n\r\nexport default DayPagination;\r\n\r\n",
+        "examples": []
+    },
+    {
+        "name": "EventBlock",
+        "description": "This is the EventBlock component.",
+        "props": {
+            "id": {
+                "type": {
+                    "name": "union",
+                    "value": [ { "name": "string" }, { "name": "number" } ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "name": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "start": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "end": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "allDay": {
+                "type": { "name": "bool" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "location": {
+                "type": { "name": "string" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            },
+            "categories": {
+                "type": { "name": "array" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "'No categories assigned'", "computed": false }
+            },
+            "tags": {
+                "type": { "name": "array" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "'No tags assigned'", "computed": false }
+            },
+            "important": {
+                "type": { "name": "bool" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "false", "computed": false }
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport Button from 'core/Components/Button';\r\n\r\n/** This is the EventBlock component. */\r\nclass EventBlock extends React.PureComponent {\r\n  render() {\r\n    let i = 0;\r\n    const categories = this.props.categories.toString().split(',').join(', ');\r\n    const isImportant = this.props.important ? <div className=\"event-alert\">Important Date</div> : null;\r\n    const tags = this.props.tags.map(tag => {\r\n      return (\r\n        <li key={`e-${this.props.id}-${i += 1}-${tag}`} className=\"event-tag\" data-type={tag}>\r\n          <div className=\"event-tag-indicator\" />\r\n          {tag}\r\n        </li>\r\n      );\r\n    });\r\n\r\n    return (\r\n      <div className=\"event-block\">\r\n        { isImportant }\r\n        <header>\r\n          <h2 className=\"event-title\">{ this.props.name }</h2>\r\n        </header>\r\n\r\n        <div className=\"event-body col-3\">\r\n          <ul className=\"event-meta\">\r\n            <li className=\"event-item\">\r\n              <div className=\"icon\" />\r\n              { this.props.allDay ? 'All Day' : `${this.props.start}-${this.props.end}` }\r\n            </li>\r\n\r\n            <li className=\"event-item\">\r\n              <div className=\"icon\" />\r\n              { this.props.location }\r\n            </li>\r\n\r\n            <li className=\"event-item event-item-categories\">\r\n              <div className=\"icon\" />\r\n              { categories }\r\n            </li>\r\n          </ul>\r\n\r\n          <ul className=\"event-tags\">\r\n            { tags }\r\n          </ul>\r\n\r\n          {/* TODO: MORE INFORMATION LINK */}\r\n\r\n          <div className=\"event-actions\">\r\n            <Button label={'Add to calendar'} btnClass={'btn-secondary'} />\r\n          </div>\r\n        </div>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nEventBlock.defaultProps = {\r\n  id: null,\r\n  name: null,\r\n  start: null,\r\n  end: null,\r\n  allDay: null,\r\n  location: null,\r\n  categories: 'No categories assigned',\r\n  tags: 'No tags assigned',\r\n  important: false,\r\n};\r\n\r\nEventBlock.propTypes = {\r\n  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),\r\n  name: PropTypes.string.isRequired,\r\n  start: PropTypes.string.isRequired,\r\n  end: PropTypes.string,\r\n  allDay: PropTypes.bool,\r\n  location: PropTypes.string.isRequired,\r\n  categories: PropTypes.array,\r\n  tags: PropTypes.array,\r\n  important: PropTypes.bool,\r\n};\r\n\r\nexport default EventBlock;\r\n\r\n",
         "examples": []
     },
     {
@@ -23,6 +162,29 @@ module.exports = [
             }
         },
         "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the Header component. */\r\nclass Header extends React.PureComponent {\r\n  render() {\r\n    return (\r\n      <header className=\"header\">\r\n        <h1>{ this.props.title }</h1>\r\n\r\n        <div className=\"header-divider\">\r\n          <svg viewBox=\"0 0 1201 112\">\r\n            <path className=\"header-divider-svg\" d=\"M-50,0h480.5C501.4,4.6,558.3,27.2,601,68c37.7-40.4,95.6-63.1,173.7-68H1253v112H-50V0z\" />\r\n          </svg>\r\n        </div>\r\n      </header>\r\n    );\r\n  }\r\n}\r\n\r\nHeader.defaultProps = {\r\n  title: 'Calendar',\r\n};\r\n\r\nHeader.propTypes = {\r\n  title: PropTypes.string.isRequired,\r\n};\r\n\r\nexport default Header;\r\n\r\n",
+        "examples": []
+    },
+    {
+        "name": "IconButton",
+        "description": "This is the IconButton component.",
+        "props": {
+            "onClick": {
+                "type": { "name": "func" },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "() => { }", "computed": false }
+            },
+            "children": {
+                "type": {
+                    "name": "union",
+                    "value": [ { "name": "element" }, { "name": "string" } ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the IconButton component. */\r\nclass IconButton extends React.PureComponent {\r\n  constructor() {\r\n    super();\r\n    this._handleClick = this.onClick.bind(this);\r\n  }\r\n\r\n  onClick(e) {\r\n    this.props.onClick(e);\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      // TODO: Add icons\r\n      <button\r\n        type=\"button\"\r\n        className=\"btn-icon\"\r\n        onClick={this._handleClick}\r\n      >\r\n        { this.props.children }\r\n      </button>\r\n    );\r\n  }\r\n}\r\n\r\nIconButton.defaultProps = {\r\n  onClick: () => { },\r\n  children: null,\r\n};\r\n\r\nIconButton.propTypes = {\r\n  onClick: PropTypes.func,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.element,\r\n    PropTypes.string,\r\n  ]),\r\n};\r\n\r\nexport default IconButton;\r\n\r\n",
         "examples": []
     },
     {

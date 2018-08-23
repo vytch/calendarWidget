@@ -1,5 +1,6 @@
 {
   "white": "#FFF",
+  "brand-white": "#FFF",
   "black": "#000",
   "cream": "#f2efeb",
   "primary": "#084732",
@@ -9,7 +10,9 @@
   "list-separator": "#d1d3d4",
   "input-bg" : "#ffffff",
   "input-border": "#b4b4b4",
+  "form-label": "#000000",
   "border": "#E4F0F8",
+  "divider": "#9b9b9b",
   "dark-font": "#000000",
   "dark-grey": "#585858",
   "header-bg": "#084732",

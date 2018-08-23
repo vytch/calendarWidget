@@ -1,0 +1,90 @@
+.align-center{
+    text-align: center;
+}
+
+.event{
+    &-block{
+        margin-top: 2rem;
+        background: $white;
+        border: 1px solid transparent; // bug fix for missing top padding
+        font-size: 16px;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+        
+        ul{ list-style: none;}
+        li{ margin-bottom: 1rem; }
+    }
+
+    &-body{ padding: 1rem 2rem 2rem; }
+    &-title{ 
+        font-size: 20px;
+        line-height: 27px;
+        margin: 2rem 0 0 2rem; 
+    }
+    
+    // the "Important Date" strip
+    &-alert{
+        background: $primary;
+        color: $white;
+        padding: 10px 10px;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 12px;
+    }
+    
+    // apply flexbox...
+    &-body,
+    &-tags,
+    &-meta{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-title{ color: $black; }
+
+    &-body > *{
+        padding: 0 1rem; 
+        &:first-child{ padding-left: 0; }
+        &:last-child{ padding-right: 0; }
+    }
+
+    // Meta UL
+    &-meta{      
+        flex: 2;
+    }
+
+    &-item{
+        width: auto;
+        min-width: 200px;
+
+        &-categories{ width: 100%; }
+    }
+
+    // Tags & Button
+    &-tags,
+    &-actions{ flex: 1; }
+    
+    &-actions{ 
+        text-align: right; 
+        .btn{ height: 45px; }
+    }
+
+    &-tag{
+        width: 35%;
+
+        &-indicator{
+            $size: 12px;
+            display: inline-block;
+            vertical-align: inherit;
+            width: $size;
+            height: $size;
+            margin-right: 1rem;
+            border-radius: 100%;
+        }
+        
+        &[data-type="JS"] &-indicator{ background: $indicator-pink; }
+        &[data-type="JSS"] &-indicator{ background: $indicator-orange; }
+        &[data-type="MS"] &-indicator{ background: $indicator-green; }
+        &[data-type="SS"] &-indicator{ background: $indicator-blue; }
+    }
+
+}

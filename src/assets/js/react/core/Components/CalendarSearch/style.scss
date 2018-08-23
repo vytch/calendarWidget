@@ -1,0 +1,21 @@
+@import './form-styles.scss';
+@import './checkbox.scss';
+
+.form{
+    margin-top: 5px; // matches the base-line of the left article content
+
+    &.calendar-search .btn-icon{
+        $gutter: 2rem;
+        margin-left: calc(-45px - #{$gutter});
+        margin-right: $gutter;
+    }
+
+    &-actions{
+        margin-top: 1rem;
+        text-align: center;
+    }
+}
+
+h3{
+    margin-bottom: 1rem;
+}

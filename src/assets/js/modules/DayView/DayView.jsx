@@ -5,7 +5,7 @@ import EventTypeList from 'core/Components/EventTypeList';
 import CalendarLegend from 'core/Components/CalendarLegend';
 import moment from 'moment';
 import cx from 'classnames';
-//
+import Button from 'core/Components/Button';
 import { Calendar } from 'react-calendar-component';
 import './style.scss';
 
@@ -17,8 +17,14 @@ class DayView extends React.Component {
       date: moment(),
     };
     this._handleDatePicked = this.setDate.bind(this);
+    this._handleSwitchView = this.handleCalendarView.bind(this);
     // this._handleHeader = this.onRenderHeader.bind(this);
   }
+
+  handleCalendarView() {
+    return this.props.switchView();
+  }
+
   setDate(date) {
     const str = date.format('YYYYMMDD');
     this.props.router.push(`/demo/${str}`);
@@ -82,10 +88,10 @@ class DayView extends React.Component {
 
         <CalendarLegend />
 
-        {/* TODO: Make this a button & footer actions component */}
+        {/* TODO: Make this a footer actions component */}
         <footer className="Calendar-actions">
-          <button type="button" className="btn btn-primary">View key dates</button>
-          <button type="button" className="btn btn-primary">Search for Events</button>
+          <Button label={'View Key Dates'} btnClass={'btn-primary'} />
+          <Button label={'Search For Events'} btnClass={'btn-primary'} onClick={this.handleCalendarView()} />
         </footer>
       </div>
     );
@@ -94,10 +100,12 @@ class DayView extends React.Component {
 
 DayView.defaultProps = {
   router: {},
+  switchView: null,
 };
 
 DayView.propTypes = {
   router: PropTypes.object,
+  switchView: PropTypes.func,
 };
 
 export default withRouter(DayView);

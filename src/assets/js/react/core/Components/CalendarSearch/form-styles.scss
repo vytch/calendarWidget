@@ -1,0 +1,32 @@
+.form {
+    &-group {
+        +.form-group {
+            margin-top: 1.5rem;
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        display: block;
+        width: 100%;
+        border: 1px solid $input-border;
+    }
+
+    input,
+    select {
+        height: 45px;
+        padding: 10px;
+    }
+
+    label,
+    &-label {
+        font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
+        color: $form-label;
+        +input,
+        +select,
+        +textarea {
+            margin-top: 0.25rem;
+        }
+    }
+}
