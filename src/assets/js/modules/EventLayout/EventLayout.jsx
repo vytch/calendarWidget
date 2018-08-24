@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {updateTesting} from './Actions/TestingActions';
 import { Link } from 'react-router';
+import {updateTesting} from './Actions/TestingActions';
 import Header from '../../react/core/Components/Header';
 import './style.scss';
 
@@ -18,6 +18,8 @@ class EventLayout extends React.Component {
     this.props.dispatch(updateTesting('Blah blah'));
   }
   render() {
+    const searchingText = this.props.isSearching ? 'Yep' : 'Nope';
+
     return (
       <div>
         <Header />
@@ -31,7 +33,7 @@ class EventLayout extends React.Component {
           <li><Link to="/demo/20180712">Demo 2018 07 13</Link></li>
           <li><Link to="/demo/20180713">Demo 2018 07 12</Link></li>
         </ul>
-        <h3>Reduc value:{this.props.testing}</h3>
+        <h3>Reduc value 1:{ searchingText }</h3>
         <p>
           <a href="#" onClick={this._handleClick}>Update me </a>
         </p>
@@ -46,13 +48,13 @@ EventLayout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string, PropTypes.element, PropTypes.array,
   ]).isRequired,
-  testing: PropTypes.string.isRequired,
+  isSearching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
-    testing: state.reducer.testing,
+    isSearching: state.reducer.isSearching,
   };
 };
 export default connect(mapStateToProps)(EventLayout);

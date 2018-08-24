@@ -4,8 +4,8 @@ import './style.scss';
 
 /** This is the Button component. */
 class Button extends React.PureComponent {
-  _handleClick = e => {
-    this.props.onClick(e);
+  _handleClick = () => {
+    this.props.onClick();
   }
 
   render() {

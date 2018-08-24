@@ -15,6 +15,7 @@ class Event extends React.Component {
     const store = appStore({
       reducer: {
         testing: 'hello world',
+        isSearching: false,
       },
     });
     return (
@@ -22,7 +23,7 @@ class Event extends React.Component {
         <Provider store={store}>
           <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
             <Route path="/" component={EventLayout}>
-              <IndexRoute component={LandingPage} />
+              <IndexRoute component={PageLanding} />
               <Route path="demo/:id" component={DayView} />
             </Route>
           </Router>

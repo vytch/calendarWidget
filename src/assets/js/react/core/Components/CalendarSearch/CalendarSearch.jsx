@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/SearchActions.js';
+import { Dropdown } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import CheckboxGroup from '../CheckboxGroup';
 import Button from '../Button';
 import IconButton from '../IconButton';
@@ -34,20 +38,23 @@ const cbOptions = [
 
 /** This is the CalendarSearch component. */
 class CalendarSearch extends React.Component {
-  constructor() {
-    super();
-    this._handleSwitchView = this.handleCalendarView.bind(this);
-  }
-
-  handleCalendarView() {
-    return this.props.switchView();
+  _handleSearchState = () => {
+    this.props.dispatch(setIsSearching());
   }
 
   render() {
+    const options = [
+      {key: 'option-1', text: 'Option 1', value: 'option-1'},
+      {key: 'option-2', text: 'Option 2', value: 'option-2'},
+      {key: 'option-3', text: 'Option 3', value: 'option-3'},
+      {key: 'option-4', text: 'Option 4', value: 'option-4'},
+      {key: 'option-5', text: 'Option 5', value: 'option-5'},
+    ];
+
     return (
       <div className="calendar-search form">
         <h3>
-          <IconButton onClick={this._handleSwitchView()}>
+          <IconButton onClick={() => this._handleSearchState()}>
             <svg x="0px" y="0px" viewBox="0 0 18 20">
               <path
                 className="svg-icon"
@@ -80,6 +87,10 @@ class CalendarSearch extends React.Component {
         <CheckboxGroup label={'School'} options={cbOptions} />
 
         <div className="form-group">
+          <Dropdown placeholder="Skills" fluid multiple selection options={options} />
+        </div>
+
+        <div className="form-group">
           <label htmlFor="search-category">Category</label>
           <select name="search-category" id="search-category">
             <option value="Option 1">Option 1</option>
@@ -103,11 +114,10 @@ class CalendarSearch extends React.Component {
 }
 
 CalendarSearch.defaultProps = {
-  switchView: null,
 };
 
 CalendarSearch.propTypes = {
-  switchView: PropTypes.func,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default CalendarSearch;
+export default connect()(CalendarSearch);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {withRouter } from 'react-router';
 import EventTypeList from 'core/Components/EventTypeList';
 import CalendarLegend from 'core/Components/CalendarLegend';
@@ -8,6 +9,7 @@ import cx from 'classnames';
 import Button from 'core/Components/Button';
 import { Calendar } from 'react-calendar-component';
 import './style.scss';
+import { setIsSearching } from '../CalendarContainer/Actions/SearchActions';
 
 /** This is the DayView component. */
 class DayView extends React.Component {
@@ -16,20 +18,17 @@ class DayView extends React.Component {
     this.state = {
       date: moment(),
     };
-    this._handleDatePicked = this.setDate.bind(this);
-    this._handleSwitchView = this.handleCalendarView.bind(this);
-    // this._handleHeader = this.onRenderHeader.bind(this);
   }
 
-  handleCalendarView() {
-    // switch from Calendar to search fields
-    return this.props.switchView();
+  _handleSearchState = () => {
+    this.props.dispatch(setIsSearching());
   }
 
-  setDate(date) {
+  _handleDatePicked = date => {
     const str = date.format('YYYYMMDD');
     this.props.router.push(`/demo/${str}`);
   }
+
   onRenderDay({ day, classNames, onPickDate }) {
     return (
       <div
@@ -89,10 +88,9 @@ class DayView extends React.Component {
 
         <CalendarLegend />
 
-        {/* TODO: Make this a footer actions component */}
         <footer className="Calendar-actions">
           <Button label={'View Key Dates'} btnClass={'btn-primary'} />
-          <Button label={'Search For Events'} btnClass={'btn-primary'} onClick={this.handleCalendarView()} />
+          <Button label={'Search For Events'} btnClass={'btn-primary'} onClick={() => this._handleSearchState()} />
         </footer>
       </div>
     );
@@ -101,12 +99,11 @@ class DayView extends React.Component {
 
 DayView.defaultProps = {
   router: {},
-  switchView: null,
 };
 
 DayView.propTypes = {
   router: PropTypes.object,
-  switchView: PropTypes.func,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default withRouter(DayView);
+export default withRouter(connect()(DayView));

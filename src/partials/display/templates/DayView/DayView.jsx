@@ -4,7 +4,6 @@ import {withRouter } from 'react-router';
 import EventTypeList from 'core-partials/display/molecules/EventTypeList';
 import moment from 'moment';
 import cx from 'classnames';
-//
 import { Calendar } from 'react-calendar-component';
 import './style.scss';
 
