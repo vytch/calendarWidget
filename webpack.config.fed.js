@@ -125,7 +125,7 @@ module.exports = {
           }
       },
       {
-          test: /\.(svg)$/,
+          test: /\.(png|svg)$/,
           exclude: /node_modules/,
           loader: 'url-loader?limit=10000',
           options: {

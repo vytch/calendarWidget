@@ -37,6 +37,11 @@
         font-size: 20px;
         justify-content: space-between;
 
+        svg{
+            width: 8px;
+            height: 14px;
+        }
+
         button {
             width: 50px;
             font-size: 20px;
@@ -50,6 +55,7 @@
             font-size: 20px;
             line-height: inherit;
             color: $black;
+            margin: 0 auto;
         }
     }
 

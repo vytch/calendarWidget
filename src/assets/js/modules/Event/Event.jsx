@@ -6,6 +6,7 @@ import EventLayout from 'react-module/EventLayout';
 import {Provider} from 'react-redux';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import appStore from './Stores/appStore';
+import './semantic.css';
 
 import './style.scss';
 

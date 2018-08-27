@@ -7,10 +7,12 @@
 
     input,
     select,
-    textarea {
+    textarea,
+    .ui.selection.dropdown {
         display: block;
         width: 100%;
         border: 1px solid $input-border;
+        border-radius: 0;
     }
 
     input,
@@ -23,9 +25,11 @@
     &-label {
         font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
         color: $form-label;
+        
         +input,
         +select,
-        +textarea {
+        +textarea,
+        + .ui.selection.dropdown {
             margin-top: 0.25rem;
         }
     }

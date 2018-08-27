@@ -9,11 +9,12 @@ class IconButton extends React.PureComponent {
   }
 
   render() {
+    const classes = this.props.hasBg ? ['btn-icon'] : ['btn-icon btn-transparent'];
     return (
       // TODO: Add icons
       <button
         type="button"
-        className="btn-icon"
+        className={classes.join(' ')}
         onClick={this._handleClick}
       >
         { this.props.children }
@@ -25,6 +26,7 @@ class IconButton extends React.PureComponent {
 IconButton.defaultProps = {
   onClick: () => { },
   children: null,
+  hasBg: true,
 };
 
 IconButton.propTypes = {
@@ -33,6 +35,7 @@ IconButton.propTypes = {
     PropTypes.element,
     PropTypes.string,
   ]),
+  hasBg: PropTypes.bool,
 };
 
 export default IconButton;

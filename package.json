@@ -74,6 +74,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "clipboard": "^1.7.1",
+    "daterangepicker": "^3.0.3",
     "ddbreakpoints": "^1.1.1",
     "fangs.js": "1.0.3",
     "highlight.js": "^9.12.0",

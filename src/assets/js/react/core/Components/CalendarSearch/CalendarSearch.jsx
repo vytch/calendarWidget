@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/SearchActions.js';
 import { Dropdown } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
+import daterangepicker from 'daterangepicker';
+import $ from 'jquery';
 import CheckboxGroup from '../CheckboxGroup';
 import Button from '../Button';
 import IconButton from '../IconButton';
+
 import './style.scss';
 
 const cbOptions = [
@@ -38,8 +40,22 @@ const cbOptions = [
 
 /** This is the CalendarSearch component. */
 class CalendarSearch extends React.Component {
+  constructor() {
+    super();
+    this.selector = '';
+  }
+
   _handleSearchState = () => {
     this.props.dispatch(setIsSearching());
+  }
+
+  componentDidMount = () => {
+    const el = this.selector;
+    console.log(el);
+    $(this.selector).daterangepicker({}, (start, end) => {
+      // TODO: This will be the submitted date data
+      console.log(`[NEW SELECTION]: ${start.format('YYYYMMDD')} ${end.format('YYYYMMDD')}`);
+    });
   }
 
   render() {
@@ -87,22 +103,14 @@ class CalendarSearch extends React.Component {
         <CheckboxGroup label={'School'} options={cbOptions} />
 
         <div className="form-group">
-          <Dropdown placeholder="Skills" fluid multiple selection options={options} />
-        </div>
-
-        <div className="form-group">
           <label htmlFor="search-category">Category</label>
-          <select name="search-category" id="search-category">
-            <option value="Option 1">Option 1</option>
-            <option value="Option 2">Option 2</option>
-            <option value="Option 3">Option 3</option>
-          </select>
+          <Dropdown fluid multiple selection options={options} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="search-dates">Keywords</label>
+          <label htmlFor="search-dates">Date</label>
           {/* TODO: Calculate 20yr range for min max valus */}
-          <input type="date" name="search-dates" id="search-dates" />
+          <input ref={n => this.selector = n} type="input" name="search-dates" id="search-dates" />
         </div>
 
         <footer className="form-actions">
