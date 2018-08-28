@@ -1,6 +1,56 @@
-.ui{
+.Calendar-header .ui{
     &.header,
     .header{
         background: transparent;
+        
+        .dropdown {
+            // year date / top of dropdown
+            > span{
+                display: inline-block;
+                padding-top: 14px;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            
+            //rest of dropdown
+            span{
+                font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
+            }
+        }
+
+        .dropdown > span + i:before{
+            content: ""!important; // didn't want to use important!
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-right: 1px solid $black;
+            border-bottom: 1px solid $black;
+            transform: translateY(-5px) rotate(45deg);
+            margin-left: 5px;
+        }
+
+        [disabled]{ opacity: 0.25; }
+
+        .svg-arrows{
+            width: 5px;
+            height: 12px;
+        }
     }
+    
+    &.header .year{
+        &-selector{}
+    
+        &-selected{
+            font-size: 16px;
+        }
+    }
+
+    span.text{
+        font-size: 16px;
+        padding: 0;
+    }
+}
+
+.calendar-trigger{
+    font-size: 20px;
 }

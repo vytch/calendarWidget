@@ -82,13 +82,12 @@ class DayView extends React.Component {
             <svg className="svg-arrows" viewBox="0 0 8 14">
               <path
                 className="svg-black"
-                d="M0.8,0.2C0.9,0.1,0.9,0.1,1,0.1s0.2,0,0.3,0.1l6.5,6.6C7.9,6.8,8,6.9,8,7s0,0.2-0.1,0.3l-6.5,6.6
-	c-0.1,0.1-0.2,0.1-0.3,0.1s-0.2,0-0.3-0.1l-0.6-0.6C0.1,13.1,0,13,0,12.9s0-0.2,0.1-0.3L5.8,7L0.2,1.3C0.1,1.3,0,1.2,0,1.1
-	s0-0.2,0.1-0.3L0.8,0.2z"
+                d="M0.8,0.2C0.9,0.1,0.9,0.1,1,0.1s0.2,0,0.3,0.1l6.5,6.6C7.9,6.8,8,6.9,8,7s0,0.2-0.1,0.3l-6.5,6.6 c-0.1,0.1-0.2,0.1-0.3,0.1s-0.2,0-0.3-0.1l-0.6-0.6C0.1,13.1,0,13,0,12.9s0-0.2,0.1-0.3L5.8,7L0.2,1.3C0.1,1.3,0,1.2,0,1.1 s0-0.2,0.1-0.3L0.8,0.2z"
               />
             </svg>
           </button>
         </div>
+
         <div className="Calendar-grid Calendar-grid-days">
           <div className="Calendar-grid-item">S</div>
           <div className="Calendar-grid-item">M</div>

@@ -119,10 +119,28 @@ class DayViewDropDown extends React.PureComponent {
     const isMax = selectedDate >= max ? true : false;
 
     const yearSelector = (
-      <div className="test">
-        <Button disabled={isMin} label="<" onClick={e => this._handleYearChange(e, 'prev')} />
-        <span>{moment(selectedDate).format('YYYY')}</span>
-        <Button disabled={isMax} label=">" onClick={e => this._handleYearChange(e, 'next')} />
+      <div className="year-selector">
+        <button type="button" disabled={isMin} onClick={e => this._handleYearChange(e, 'prev')}>
+          <svg className="svg-arrows" viewBox="0 0 8 14">
+            <path
+              className="svg-black"
+              d="M7.2,13.8c-0.1,0.1-0.1,0.1-0.3,0.1c-0.1,0-0.2,0-0.3-0.1L0.2,7.2C0.1,7.2,0,7.1,0,7s0-0.2,0.1-0.3l6.5-6.6
+              C6.8,0.1,6.9,0.1,7,0.1s0.2,0,0.3,0.1l0.6,0.6C7.9,0.9,8,1,8,1.1s0,0.2-0.1,0.3L2.2,7l5.7,5.7C7.9,12.7,8,12.8,8,12.9s0,0.2-0.1,0.3
+              L7.2,13.8z"
+            />
+          </svg>
+        </button>
+
+        <span className="year-selected">{moment(selectedDate).format('YYYY')}</span>
+
+        <button type="button" disabled={isMax} onClick={e => this._handleYearChange(e, 'next')}>
+          <svg className="svg-arrows" viewBox="0 0 8 14">
+            <path
+              className="svg-black"
+              d="M0.8,0.2C0.9,0.1,0.9,0.1,1,0.1s0.2,0,0.3,0.1l6.5,6.6C7.9,6.8,8,6.9,8,7s0,0.2-0.1,0.3l-6.5,6.6 c-0.1,0.1-0.2,0.1-0.3,0.1s-0.2,0-0.3-0.1l-0.6-0.6C0.1,13.1,0,13,0,12.9s0-0.2,0.1-0.3L5.8,7L0.2,1.3C0.1,1.3,0,1.2,0,1.1 s0-0.2,0.1-0.3L0.8,0.2z"
+            />
+          </svg>
+        </button>
       </div>
     );
 
