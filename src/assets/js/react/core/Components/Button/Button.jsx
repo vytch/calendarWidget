@@ -4,8 +4,8 @@ import './style.scss';
 
 /** This is the Button component. */
 class Button extends React.PureComponent {
-  _handleClick = () => {
-    this.props.onClick();
+  _handleClick = e => {
+    this.props.onClick(e);
   }
 
   render() {
@@ -17,6 +17,7 @@ class Button extends React.PureComponent {
         type="button"
         className={classes.join(' ')}
         onClick={this._handleClick}
+        disabled={this.props.disabled}
       >
         { this.props.children }
         { this.props.label }
@@ -30,6 +31,7 @@ Button.defaultProps = {
   label: 'Button Label',
   btnClass: null,
   children: null,
+  disabled: false,
 };
 
 Button.propTypes = {
@@ -40,6 +42,7 @@ Button.propTypes = {
     PropTypes.element,
     PropTypes.string,
   ]),
+  disabled: PropTypes.bool,
 };
 
 export default Button;

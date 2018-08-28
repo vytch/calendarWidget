@@ -14,6 +14,13 @@ export default function storeReducer(state = { testing: ''}, action) {
     };
     break;
 
+  case 'UPDATE_MONTHYEAR':
+    return {
+      ...state,
+      selectedDate: action.val,
+    };
+    break;
+
   default:
     return state;
     break;

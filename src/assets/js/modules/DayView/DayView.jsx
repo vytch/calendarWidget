@@ -9,9 +9,9 @@ import cx from 'classnames';
 import Button from 'core/Components/Button';
 import DayViewDropDown from 'core/Components/DayViewDropDown';
 import { Calendar } from 'react-calendar-component';
-import { Dropdown, Header } from 'semantic-ui-react';
+// import { Dropdown, Header } from 'semantic-ui-react';
 import './style.scss';
-import { setIsSearching } from '../CalendarContainer/Actions/SearchActions';
+import { setIsSearching, updateMonthYear } from '../CalendarContainer/Actions/CalendarActions';
 
 /** This is the DayView component. */
 class DayView extends React.Component {
@@ -49,6 +49,17 @@ class DayView extends React.Component {
       </div>
     );
   }
+
+  _handleChangeMonth = nextDate => {
+    const date = moment(nextDate).format('YYYYMMDD');
+    const {min, max} = this.props.minMax;
+
+    // If not in range, don't do anything.
+    if (date >= max || date <= min) { return false; };
+
+    this.props.dispatch(updateMonthYear(date));
+  }
+
   onRenderHeader({ date, onPrevMonth, onNextMonth }) {
     return (
       <header>
@@ -65,7 +76,6 @@ class DayView extends React.Component {
           </button>
 
           <h3 className="Calendar-header-currentDate">
-            {/* {date.format('MMMM YYYY')} */}
             <DayViewDropDown />
           </h3>
           <button type="button" onClick={onNextMonth}>
@@ -92,17 +102,19 @@ class DayView extends React.Component {
     );
 
   }
+
   formatDate(str) {
     return moment(str, 'YYYYMMDD').format('ddd Do MMM YYYY');
   }
+
   render() {
     return (
       <div>
         <h3>MLC Calendar of events</h3>
 
         <Calendar
-          onChangeMonth={date => this.setState({ date })}
-          date={this.state.date}
+          onChangeMonth={date => this._handleChangeMonth(date._d)}
+          date={moment(this.props.selectedDate)}
           renderDay={this.onRenderDay}
           renderHeader={this.onRenderHeader}
           onPickDate={this._handleDatePicked}
@@ -152,7 +164,16 @@ DayView.defaultProps = {
 
 DayView.propTypes = {
   router: PropTypes.object,
+  selectedDate: PropTypes.string.isRequired,
+  minMax: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 
-export default withRouter(connect()(DayView));
+const mapStateToProps = state => {
+  return {
+    selectedDate: state.reducer.selectedDate,
+    minMax: state.reducer.minMax,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(DayView));

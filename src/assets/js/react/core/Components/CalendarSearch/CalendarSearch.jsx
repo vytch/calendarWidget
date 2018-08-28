@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/SearchActions.js';
+import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarActions.js';
 import { Dropdown } from 'semantic-ui-react';
 import daterangepicker from 'daterangepicker';
 import $ from 'jquery';
@@ -54,7 +54,7 @@ class CalendarSearch extends React.Component {
     console.log(el);
     $(this.selector).daterangepicker({}, (start, end) => {
       // TODO: This will be the submitted date data
-      console.log(`[NEW SELECTION]: ${start.format('YYYYMMDD')} ${end.format('YYYYMMDD')}`);
+      console.log(`${start.format('YYYYMMDD')} ${end.format('YYYYMMDD')}`);
     });
   }
 

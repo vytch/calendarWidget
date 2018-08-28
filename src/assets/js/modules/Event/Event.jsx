@@ -4,6 +4,7 @@ import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import EventLayout from 'react-module/EventLayout';
 import {Provider} from 'react-redux';
+import moment from 'moment';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import appStore from './Stores/appStore';
 import './semantic.css';
@@ -17,6 +18,11 @@ class Event extends React.Component {
       reducer: {
         testing: 'hello world',
         isSearching: false,
+        selectedDate: moment().format('YYYYMMDD'),
+        minMax: {
+          min: moment().subtract(17, 'y').format('YYYYMMDD'),
+          max: moment().add(2, 'y').format('YYYYMMDD'),
+        },
       },
     });
     return (
