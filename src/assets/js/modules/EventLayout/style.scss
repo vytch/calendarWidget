@@ -49,6 +49,10 @@ h3 {
   line-height: 29px;
 }
 
+p + p{
+  margin-top: 1.5rem;
+}
+
 @font-face {
   font-family: 'Avenir LT Std';
   src: local('Avenir LT Std 55 Roman'), local('AvenirLTStd-Roman'), 

@@ -31,7 +31,9 @@ class EventTypeList extends React.PureComponent {
   }
 
   render() {
-    const currentEvents = this.state.events.map(event => <li data-type={event}>{event}</li>);
+    const currentEvents = this.state.events.map(event => {
+      return <li key={`${this.props.day}-${event}`} data-type={event}>{event}</li>;
+    });
 
     return (
       <ul className="event-list-type">

@@ -14,7 +14,7 @@ class LandingPage extends React.Component {
         <section>
           <IntroCopy
             title={'Lorem ipsum dolor sit amet'}
-            content={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius soluta nesciunt rem distinctio fuga, sequi vitae animi. Totam, quaerat sint consequatur ipsum placeat magnam, eius unde soluta eum, dicta officia.'}
+            content={'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius soluta nesciunt rem distinctio fuga, sequi vitae animi. Totam, quaerat sint consequatur ipsum placeat magnam, eius unde soluta eum, dicta officia.</p><p>Esse facilis optio recusandae hic incidunt aliquam, nisi odio. Blanditiis distinctio, tempore mollitia quaerat aliquam voluptas molestiae consequatur.</p>'}
           />
         </section>
 

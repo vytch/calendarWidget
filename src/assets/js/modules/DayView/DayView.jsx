@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import EventTypeList from 'core/Components/EventTypeList';
 import CalendarLegend from 'core/Components/CalendarLegend';
 import moment from 'moment';
@@ -9,9 +9,10 @@ import cx from 'classnames';
 import Button from 'core/Components/Button';
 import DayViewDropDown from 'core/Components/DayViewDropDown';
 import { Calendar } from 'react-calendar-component';
-// import { Dropdown, Header } from 'semantic-ui-react';
 import './style.scss';
 import { setIsSearching, updateMonthYear } from '../CalendarContainer/Actions/CalendarActions';
+
+// TODO: GET PUBLIC HOLIDAYS & TERM DATES
 
 /** This is the DayView component. */
 class DayView extends React.Component {
@@ -123,22 +124,24 @@ class DayView extends React.Component {
         <CalendarLegend />
 
         <footer className="Calendar-actions">
-          <Button label={'View Key Dates'} btnClass={'btn-primary'}>
-            <svg className="btn-icon-sm" x="0px" y="0px" viewBox="0 0 16 16">
-              <path
-                className="svg-white"
-                d="M10.5,2.5c0.9,0,2.1-0.3,3.4-0.9c0.3-0.1,0.7-0.2,1-0.1s0.6,0.3,0.8,0.5S16,2.6,16,3v7.5c0,0.3-0.1,0.5-0.2,0.7
-                  s-0.3,0.4-0.5,0.5c-1.3,0.8-2.6,1.3-4,1.3c-0.5,0-1.1-0.1-1.6-0.2c-0.3-0.1-0.8-0.2-1.4-0.4c-0.5-0.1-0.8-0.3-1.1-0.3
-                  C6.9,12,6.6,12,6.3,12c-0.8,0-1.6,0.1-2.2,0.3c-0.5,0.1-1.1,0.3-1.8,0.7v2.6c0,0.1,0,0.3-0.1,0.4S1.9,16,1.8,16H1.3
-                  c-0.1,0-0.3,0-0.4-0.1s-0.1-0.2-0.1-0.4V2.8C0.5,2.7,0.4,2.5,0.2,2.3S0,1.8,0,1.5c0-0.4,0.2-0.8,0.5-1.1S1.2,0,1.6,0
-                  C2,0,2.3,0.2,2.5,0.4S3,1,3,1.3C3,1.5,3,1.8,3,2c0.8-0.3,1.6-0.5,2.5-0.5C6,1.5,6.5,1.6,7,1.7c0.3,0.1,0.8,0.2,1.4,0.4
-                  c0.5,0.1,0.8,0.3,1.1,0.3C9.9,2.5,10.2,2.5,10.5,2.5z M14.5,10.5V3c-0.6,0.3-1.2,0.5-1.9,0.7C11.8,3.9,11.1,4,10.5,4
-                  c-0.4,0-0.9-0.1-1.3-0.2C8.9,3.8,8.5,3.7,8,3.5S7.1,3.2,6.8,3.2C6.3,3.1,5.9,3,5.5,3C4.8,3,4.2,3.1,3.6,3.3C3.1,3.5,2.7,3.7,2.3,4
-                  v7.3c0.5-0.2,1.1-0.4,1.8-0.5s1.5-0.2,2.2-0.2c0.4,0,0.9,0.1,1.3,0.2c0.3,0.1,0.7,0.2,1.2,0.3s0.9,0.3,1.2,0.3
-                  c0.5,0.1,0.9,0.2,1.3,0.2c0.6,0,1.2-0.1,1.8-0.3C13.7,11,14.1,10.8,14.5,10.5z"
-              />
-            </svg>
-          </Button>
+          <Link to="/key-dates">
+            <Button label={'View Key Dates'} btnClass={'btn-primary'}>
+              <svg className="btn-icon-sm" x="0px" y="0px" viewBox="0 0 16 16">
+                <path
+                  className="svg-white"
+                  d="M10.5,2.5c0.9,0,2.1-0.3,3.4-0.9c0.3-0.1,0.7-0.2,1-0.1s0.6,0.3,0.8,0.5S16,2.6,16,3v7.5c0,0.3-0.1,0.5-0.2,0.7
+                    s-0.3,0.4-0.5,0.5c-1.3,0.8-2.6,1.3-4,1.3c-0.5,0-1.1-0.1-1.6-0.2c-0.3-0.1-0.8-0.2-1.4-0.4c-0.5-0.1-0.8-0.3-1.1-0.3
+                    C6.9,12,6.6,12,6.3,12c-0.8,0-1.6,0.1-2.2,0.3c-0.5,0.1-1.1,0.3-1.8,0.7v2.6c0,0.1,0,0.3-0.1,0.4S1.9,16,1.8,16H1.3
+                    c-0.1,0-0.3,0-0.4-0.1s-0.1-0.2-0.1-0.4V2.8C0.5,2.7,0.4,2.5,0.2,2.3S0,1.8,0,1.5c0-0.4,0.2-0.8,0.5-1.1S1.2,0,1.6,0
+                    C2,0,2.3,0.2,2.5,0.4S3,1,3,1.3C3,1.5,3,1.8,3,2c0.8-0.3,1.6-0.5,2.5-0.5C6,1.5,6.5,1.6,7,1.7c0.3,0.1,0.8,0.2,1.4,0.4
+                    c0.5,0.1,0.8,0.3,1.1,0.3C9.9,2.5,10.2,2.5,10.5,2.5z M14.5,10.5V3c-0.6,0.3-1.2,0.5-1.9,0.7C11.8,3.9,11.1,4,10.5,4
+                    c-0.4,0-0.9-0.1-1.3-0.2C8.9,3.8,8.5,3.7,8,3.5S7.1,3.2,6.8,3.2C6.3,3.1,5.9,3,5.5,3C4.8,3,4.2,3.1,3.6,3.3C3.1,3.5,2.7,3.7,2.3,4
+                    v7.3c0.5-0.2,1.1-0.4,1.8-0.5s1.5-0.2,2.2-0.2c0.4,0,0.9,0.1,1.3,0.2c0.3,0.1,0.7,0.2,1.2,0.3s0.9,0.3,1.2,0.3
+                    c0.5,0.1,0.9,0.2,1.3,0.2c0.6,0,1.2-0.1,1.8-0.3C13.7,11,14.1,10.8,14.5,10.5z"
+                />
+              </svg>
+            </Button>
+          </Link>
 
           <Button label={'Search For Events'} btnClass={'btn-primary'} onClick={() => this._handleSearchState()}>
             <svg className="btn-icon-sm" viewBox="0 0 16 16">

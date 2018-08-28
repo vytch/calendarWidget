@@ -27,16 +27,6 @@ class EventLayout extends React.Component {
         <main className="wrapper">
           {this.props.children}
         </main>
-
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/demo/20180712">Demo 2018 07 13</Link></li>
-          <li><Link to="/demo/20180713">Demo 2018 07 12</Link></li>
-        </ul>
-        <h3>Reduc value 1:{ searchingText }</h3>
-        <p>
-          <a href="#" onClick={this._handleClick}>Update me </a>
-        </p>
       </div>
     );
   }

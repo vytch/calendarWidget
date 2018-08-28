@@ -1,5 +1,6 @@
 import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
+import KeyDates from 'fed-modules/PageKeyDates';
 import routeData from 'data/routeData.json';
 
 const routes = {
@@ -15,6 +16,14 @@ const routes = {
       component: DayView,
       params: {
         layout: 'Demo',
+      },
+    },
+    {
+      path: '/kay-dates',
+      name: 'Key Dates',
+      component: KeyDates,
+      params: {
+        layout: 'Key Dates',
       },
     },
   ],

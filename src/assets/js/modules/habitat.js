@@ -1,6 +1,7 @@
 import ReactHabitat from 'react-habitat';
 
 // [PLOP-MARKER-IMPORT]
+import PageKeyDates from './PageKeyDates';
 import PageDayView from './PageDayView';
 import CalendarContainer from './CalendarContainer';
 import PageLanding from './PageLanding';
@@ -16,6 +17,7 @@ class App extends ReactHabitat.Bootstrapper {
 
     // Register a component
     // [PLOP-MARKER-REGISTRY]
+    builder.register(PageKeyDates).as('PageKeyDates');
     builder.register(PageDayView).as('PageDayView');
     builder.register(CalendarContainer).as('CalendarContainer');
     builder.register(PageLanding).as('PageLanding');

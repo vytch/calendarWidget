@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'core/Components/Button';
+import './style.scss';
 
 /** This is the EventBlock component. */
 class EventBlock extends React.PureComponent {
