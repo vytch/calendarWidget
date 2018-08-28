@@ -2,7 +2,7 @@
     display: flex;
     width: 70%;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: center;
 
     li {
         overflow: hidden;
@@ -11,6 +11,8 @@
         display: block;
         text-indent: -1000px;
         border-radius: 50%;
+
+        + li { margin-left: 4px; }
         
         &[data-type] {
             background: transparent;

@@ -45,7 +45,7 @@ class DayView extends React.Component {
         onClick={() => onPickDate(day)}
       >
         {day.format('D')}
-        <EventTypeList />
+        <EventTypeList day={day} />
       </div>
     );
   }
@@ -78,6 +78,7 @@ class DayView extends React.Component {
           <h3 className="Calendar-header-currentDate">
             <DayViewDropDown />
           </h3>
+
           <button type="button" onClick={onNextMonth}>
             <svg className="svg-arrows" viewBox="0 0 8 14">
               <path

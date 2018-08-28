@@ -189,7 +189,14 @@ module.exports = [
     {
         "name": "EventTypeList",
         "description": "This is the EventTypeList component.",
-        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the EventTypeList component. */\r\nclass EventTypeList extends React.PureComponent {\r\n  render() {\r\n    return (\r\n      <ul className=\"event-list-type\">\r\n        <li data-type=\"JS\">JS</li>\r\n        <li data-type=\"JSS\">JSS</li>\r\n        <li data-type=\"MS\">MS</li>\r\n        <li data-type=\"SS\">SS</li>\r\n      </ul>\r\n    );\r\n  }\r\n}\r\n\r\nEventTypeList.defaultProps = {\r\n};\r\n\r\nEventTypeList.propTypes = {\r\n};\r\n\r\nexport default EventTypeList;\r\n\r\n",
+        "props": {
+            "day": {
+                "type": { "name": "object" },
+                "required": true,
+                "description": ""
+            }
+        },
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport eventData from 'fed-modules/PageDayView/eventData.json';\r\nimport moment from 'moment';\r\nimport './style.scss';\r\n\r\n/** This is the EventTypeList component. */\r\nclass EventTypeList extends React.PureComponent {\r\n  state = {\r\n    events: [],\r\n  }\r\n\r\n  // first filter our the current day\r\n  compareDays = event => {\r\n    const startDay = moment(event.start).format('YYYYMMDD');\r\n    const currDay = this.props.day.format('YYYYMMDD');\r\n\r\n    return startDay === currDay;\r\n  }\r\n\r\n  // then push the tags into current state\r\n  currentTags = ({ tags }) => {\r\n    tags.map(tag => {\r\n      this.state.events.includes(tag) ? null : this.state.events.push(tag);\r\n    });\r\n  };\r\n\r\n  componentWillMount() {\r\n    // runs the above functions\r\n    eventData.filter(this.compareDays).map(this.currentTags);\r\n  }\r\n\r\n  render() {\r\n    const currentEvents = this.state.events.map(event => <li data-type={event}>{event}</li>);\r\n\r\n    return (\r\n      <ul className=\"event-list-type\">\r\n        { currentEvents }\r\n      </ul>\r\n    );\r\n  }\r\n}\r\n\r\nEventTypeList.defaultProps = {\r\n};\r\n\r\nEventTypeList.propTypes = {\r\n  day: PropTypes.object.isRequired,\r\n};\r\n\r\nexport default EventTypeList;\r\n\r\n",
         "examples": []
     },
     {
