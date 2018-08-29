@@ -18,6 +18,14 @@ class EventBlock extends React.PureComponent {
       );
     });
 
+    const footer = (
+      <footer className="event-block-footer">
+        <a className="event-block-link" href={this.props.url} target="_blank">More information</a>
+      </footer>
+    );
+
+    const eventFooter = this.props.url ? footer : null;
+
     return (
       <div className="event-block">
         { isImportant }
@@ -47,12 +55,12 @@ class EventBlock extends React.PureComponent {
             { tags }
           </ul>
 
-          {/* TODO: MORE INFORMATION LINK */}
-
           <div className="event-actions">
             <Button label={'Add to calendar'} btnClass={'btn-secondary'} />
           </div>
         </div>
+
+        { eventFooter }
       </div>
     );
   }
@@ -68,6 +76,7 @@ EventBlock.defaultProps = {
   categories: 'No categories assigned',
   tags: 'No tags assigned',
   important: false,
+  url: null,
 };
 
 EventBlock.propTypes = {
@@ -80,6 +89,7 @@ EventBlock.propTypes = {
   categories: PropTypes.array,
   tags: PropTypes.array,
   important: PropTypes.bool,
+  url: PropTypes.string,
 };
 
 export default EventBlock;

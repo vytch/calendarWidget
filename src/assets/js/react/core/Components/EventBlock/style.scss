@@ -90,4 +90,19 @@
             background: $indicator-blue;
         }
     }
+
+    // footer
+    &-block{
+        &-footer{
+            padding: 0 2rem 2rem;
+        }
+
+        &-link{
+            color: $primary;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
+            font-weight: 900;
+        }
+    }
 }

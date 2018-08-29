@@ -23,6 +23,7 @@ main.wrapper{
 main.wrapper {
   width: calc(100vw / 12 * 10);
   margin: auto;
+  padding-bottom: 5rem;
 }
 
 svg{
@@ -53,6 +54,12 @@ p + p{
   margin-top: 1.5rem;
 }
 
+a:not(.btn) {
+  transition: color 0.2s ease-out;
+  &:hover{ color: lighten($primary, 15%); }
+}
+
+//Font faces
 @font-face {
   font-family: 'Avenir LT Std';
   src: local('Avenir LT Std 55 Roman'), local('AvenirLTStd-Roman'), 

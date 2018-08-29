@@ -7,15 +7,33 @@ import './style.scss';
 
 /** This is the PageKeyDates component. */
 class PageKeyDates extends React.Component {
+  state = {
+    keyDays: [],
+  }
+
+  componentWillMount() {
+    // Get all the single days so ther'es no duplicates
+    keyDates
+      .filter(date => date.keyDate)
+      .map(day => {
+        const days = this.state.keyDays;
+        const formated = moment(day.start).format('MMMM DD YYYY');
+        days.includes(formated) ? null : days.push(formated);
+      });
+  }
+
   render() {
-    const keyEvents = keyDates.filter(date => date.keyDate);
-
-    const days = keyDates.map(day => {
+    // create each section and assigns events to their corresponding days
+    const days = this.state.keyDays.map(day => {
       return (
-        <section key={`keyDate-${day.id}`} className="key-date">
-          <h2>{moment(day.start).format('MMMM DD YYYY')}</h2>
+        <section key={`keyDay-${day}`} className="key-date">
+          <h2>{day}</h2>
 
-          <EventBlock {...day} />
+          {
+            keyDates
+              .filter(date => moment(date.start).format('MMMM DD YYYY') === day)
+              .map(evnt => <EventBlock {...evnt} />)
+          }
         </section>
       );
     });
