@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import KeyDates from 'fed-modules/PageKeyDates';
+import SearchResults from 'fed-modules/PageSearchResults';
 import EventLayout from 'react-module/EventLayout';
 import {Provider} from 'react-redux';
 import { formatDate, addSubtract } from 'js-utils/formatDate';
@@ -34,6 +35,7 @@ class Event extends React.Component {
               <IndexRoute component={PageLanding} />
               <Route path="demo/:id" component={DayView} />
               <Route path="key-dates" component={KeyDates} />
+              <Route path="search-results" component={SearchResults} />
             </Route>
           </Router>
         </Provider>

@@ -1,6 +1,7 @@
 import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import KeyDates from 'fed-modules/PageKeyDates';
+import SearchResults from 'fed-modules/PageSearchResults';
 import routeData from 'data/routeData.json';
 
 const routes = {
@@ -24,6 +25,14 @@ const routes = {
       component: KeyDates,
       params: {
         layout: 'Key Dates',
+      },
+    },
+    {
+      path: '/search-results',
+      name: 'Search Results',
+      component: SearchResults,
+      params: {
+        layout: 'Search Results',
       },
     },
   ],

@@ -17,8 +17,8 @@
     }
 
     &-back{
-        position: absolute;
-        left: 0;
-        top: 300px;
+        display: block;
+        position: relative;
+        margin-bottom: -45px;
     }
 }

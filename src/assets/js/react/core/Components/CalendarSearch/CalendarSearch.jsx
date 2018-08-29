@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router';
 import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarActions.js';
 import { Dropdown } from 'semantic-ui-react';
 import daterangepicker from 'daterangepicker';
@@ -114,7 +115,10 @@ class CalendarSearch extends React.Component {
         </div>
 
         <footer className="form-actions">
-          <Button label={'Search Events'} />
+          {/* TODO: Make this an api request */}
+          <Link to="/search-results">
+            <Button label={'Search Events'} />
+          </Link>
         </footer>
       </div>
     );
@@ -128,4 +132,4 @@ CalendarSearch.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(CalendarSearch);
+export default withRouter(connect()(CalendarSearch));

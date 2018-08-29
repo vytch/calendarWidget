@@ -32,6 +32,11 @@ button,
         color: $primary;
         background: transparent;
         border: 2px solid currentColor;
+
+        &:hover{
+            color: lighten($primary, 15%);
+            background: rgba($black, 0.05);
+        }
     }
     
     &-full{
