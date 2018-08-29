@@ -5,17 +5,20 @@ import moment from 'moment';
 import EventBlock from 'core/Components/EventBlock';
 import Button from 'core/Components/Button';
 import DayPagination from 'core/Components/DayPagination';
+import eventData from 'json/events.json';
 import './style.scss';
-import eventData from './eventData.json';
 
 /** This is the PageDayView component. */
 class PageDayView extends React.Component {
-  render() {
-    const todaysEvents = eventData.filter(evnt => {
-      const eventTime = moment(evnt.start).format('YYYYMMDD');
-      const currentDay = moment(this.props.params.id).format('YYYYMMDD');
+  state = {
+    currentDay: moment(this.props.params.id).format('YYYYMMDD'),
+  }
 
-      return eventTime === currentDay;
+  render() {
+    const todaysEvents = Object.values(eventData.events).filter(evnt => {
+      const eventTime = moment(evnt.start).format('YYYYMMDD');
+
+      return eventTime === this.state.currentDay;
     });
 
     return (

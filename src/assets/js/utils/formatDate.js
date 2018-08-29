@@ -1,0 +1,1 @@
+export const formatDate = (date, format) => moment(date).format(format);

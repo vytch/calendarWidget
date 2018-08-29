@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import eventData from 'fed-modules/PageDayView/eventData.json';
+import eventData from 'json/events.json';
 import moment from 'moment';
 import './style.scss';
 
@@ -8,14 +8,14 @@ import './style.scss';
 class EventTypeList extends React.PureComponent {
   state = {
     events: [],
+    currDay: this.props.day.format('YYYYMMDD'),
   }
 
   // first filter our the current day
   compareDays = event => {
     const startDay = moment(event.start).format('YYYYMMDD');
-    const currDay = this.props.day.format('YYYYMMDD');
 
-    return startDay === currDay;
+    return startDay === this.state.currDay;
   }
 
   // then push the tags into current state
@@ -27,7 +27,7 @@ class EventTypeList extends React.PureComponent {
 
   componentWillMount() {
     // runs the above functions
-    eventData.filter(this.compareDays).map(this.currentTags);
+    Object.values(eventData.events).filter(this.compareDays).map(this.currentTags);
   }
 
   render() {

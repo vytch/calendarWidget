@@ -119,6 +119,7 @@ module.exports = function render(locals) {  // eslint-disable-line
         {content}
 
         { script }
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
       </body>
     </html> // eslint-disable-line
   )}`;

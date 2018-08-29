@@ -13525,7 +13525,8 @@ module.exports = function render(locals) {
       'body',
       null,
       content,
-      script
+      script,
+      _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css' })
     )
   ) // eslint-disable-line
   );
