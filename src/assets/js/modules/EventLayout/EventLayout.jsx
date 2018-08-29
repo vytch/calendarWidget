@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import CalendarBackButton from 'core/Components/CalendarBackButton/CalendarBackButton';
+import Header from 'core/Components/Header';
 import {updateTesting} from './Actions/TestingActions';
-import Header from '../../react/core/Components/Header';
 import './style.scss';
 
 /** This is the EventLayout component. */
@@ -11,19 +12,23 @@ class EventLayout extends React.Component {
   constructor() {
     super();
     this._handleClick = this.clicked.bind(this);
-    console.log(updateTesting);
   }
+
   clicked(e) {
     e.preventDefault();
     this.props.dispatch(updateTesting('Blah blah'));
   }
-  render() {
-    const searchingText = this.props.isSearching ? 'Yep' : 'Nope';
 
+  render() {
+    console.log(this.props.location.pathname);
+    this.props.location.pathname === '/' ? console.log('home') : console.log('not home');
+
+    const backButton = this.props.location.pathname === '/' ? null : <CalendarBackButton />;
     return (
       <div>
         <Header />
 
+        { backButton }
         <main className="wrapper">
           {this.props.children}
         </main>
@@ -38,13 +43,8 @@ EventLayout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string, PropTypes.element, PropTypes.array,
   ]).isRequired,
-  isSearching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    isSearching: state.reducer.isSearching,
-  };
-};
-export default connect(mapStateToProps)(EventLayout);
+export default connect()(EventLayout);

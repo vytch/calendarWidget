@@ -1,1 +1,4 @@
-.key-date + .key-date { margin-top: 5rem; }
+.key-date,
+header{
+    + .key-date { margin-top: 5rem; }
+}

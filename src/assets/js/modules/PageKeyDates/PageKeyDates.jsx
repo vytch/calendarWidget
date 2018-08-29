@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { formatDate } from 'js-utils/formatDate';
 import EventBlock from 'core/Components/EventBlock';
 import eventData from 'json/events.json';
+import CalendarBackButton from 'core/Components/CalendarBackButton';
 import './style.scss';
 
 /** This is the PageKeyDates component. */
@@ -32,7 +33,7 @@ class PageKeyDates extends React.Component {
           {
             Object.values(eventData.events)
               .filter(date => formatDate(date.start, 'MMMM DD YYYY') === day)
-              .map(evnt => <EventBlock {...evnt} />)
+              .map(evnt => <EventBlock key={`keyDay-e-${evnt.id}`} {...evnt} />)
           }
         </section>
       );
@@ -41,7 +42,7 @@ class PageKeyDates extends React.Component {
     return (
       <div className="key-dates">
         <header className="align-center">
-          <p>Key Dates</p>
+          <h1>Key Dates</h1>
         </header>
 
         { days }

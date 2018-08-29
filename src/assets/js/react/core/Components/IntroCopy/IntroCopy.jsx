@@ -9,7 +9,6 @@ class IntroCopy extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props.content);
     return (
       <article>
         <header>
