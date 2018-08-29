@@ -1,16 +1,24 @@
 
-.btn-icon{
-    $size: 45px;
-    padding: 0;
-    border-radius: 0;
-    width: $size;
-    height: $size;
-    
-    svg{
-        fill: $white;
-        width: 20px;
-        height: auto;
-        max-width: 30px;
-        margin: auto;
+.btn{
+    &-icon{
+        $size: 45px;
+        padding: 0;
+        border-radius: 0;
+        width: $size;
+        height: $size;
+        
+        svg{
+            fill: $white;
+            width: 20px;
+            height: auto;
+            max-width: 30px;
+            margin: auto;
+        }
+    }
+
+    &-back{
+        position: absolute;
+        left: calc(-(100vw * 12 / 1));
+        top: 0;
     }
 }

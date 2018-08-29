@@ -4,17 +4,25 @@ import './style.scss';
 
 /** This is the IconButton component. */
 class IconButton extends React.PureComponent {
+  state = {
+    classes: ['btn-icon'],
+  }
+
   _handleClick = e => {
     this.props.onClick(e);
   }
 
+  componentWillMount() {
+    this.props.hasBg ? null : this.state.classes.push('btn-transparent');
+    this.props.classes ? this.state.classes.push(this.props.classes) : null;
+  }
+
   render() {
-    const classes = this.props.hasBg ? ['btn-icon'] : ['btn-icon btn-transparent'];
     return (
       // TODO: Add icons
       <button
         type="button"
-        className={classes.join(' ')}
+        className={this.state.classes.join(' ')}
         onClick={this._handleClick}
       >
         { this.props.children }
@@ -27,6 +35,7 @@ IconButton.defaultProps = {
   onClick: () => { },
   children: null,
   hasBg: true,
+  classes: null,
 };
 
 IconButton.propTypes = {
@@ -36,6 +45,10 @@ IconButton.propTypes = {
     PropTypes.string,
   ]),
   hasBg: PropTypes.bool,
+  classes: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.string,
+  ]),
 };
 
 export default IconButton;

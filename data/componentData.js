@@ -243,9 +243,18 @@ module.exports = [
                 "required": false,
                 "description": "",
                 "defaultValue": { "value": "true", "computed": false }
+            },
+            "classes": {
+                "type": {
+                    "name": "union",
+                    "value": [ { "name": "array" }, { "name": "string" } ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "null", "computed": false }
             }
         },
-        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the IconButton component. */\r\nclass IconButton extends React.PureComponent {\r\n  _handleClick = e => {\r\n    this.props.onClick(e);\r\n  }\r\n\r\n  render() {\r\n    const classes = this.props.hasBg ? ['btn-icon'] : ['btn-icon btn-transparent'];\r\n    return (\r\n      // TODO: Add icons\r\n      <button\r\n        type=\"button\"\r\n        className={classes.join(' ')}\r\n        onClick={this._handleClick}\r\n      >\r\n        { this.props.children }\r\n      </button>\r\n    );\r\n  }\r\n}\r\n\r\nIconButton.defaultProps = {\r\n  onClick: () => { },\r\n  children: null,\r\n  hasBg: true,\r\n};\r\n\r\nIconButton.propTypes = {\r\n  onClick: PropTypes.func,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.element,\r\n    PropTypes.string,\r\n  ]),\r\n  hasBg: PropTypes.bool,\r\n};\r\n\r\nexport default IconButton;\r\n\r\n",
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the IconButton component. */\r\nclass IconButton extends React.PureComponent {\r\n  state = {\r\n    classes: ['btn-icon'],\r\n  }\r\n\r\n  _handleClick = e => {\r\n    this.props.onClick(e);\r\n  }\r\n\r\n  componentWillMount() {\r\n    this.props.hasBg ? null : this.state.classes.push('btn-transparent');\r\n    this.props.classes ? this.state.classes.push(this.props.classes) : null;\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      // TODO: Add icons\r\n      <button\r\n        type=\"button\"\r\n        className={this.state.classes.join(' ')}\r\n        onClick={this._handleClick}\r\n      >\r\n        { this.props.children }\r\n      </button>\r\n    );\r\n  }\r\n}\r\n\r\nIconButton.defaultProps = {\r\n  onClick: () => { },\r\n  children: null,\r\n  hasBg: true,\r\n  classes: null,\r\n};\r\n\r\nIconButton.propTypes = {\r\n  onClick: PropTypes.func,\r\n  children: PropTypes.oneOfType([\r\n    PropTypes.element,\r\n    PropTypes.string,\r\n  ]),\r\n  hasBg: PropTypes.bool,\r\n  classes: PropTypes.oneOfType([\r\n    PropTypes.array,\r\n    PropTypes.string,\r\n  ]),\r\n};\r\n\r\nexport default IconButton;\r\n\r\n",
         "examples": []
     },
     {
