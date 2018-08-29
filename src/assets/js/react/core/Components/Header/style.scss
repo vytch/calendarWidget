@@ -6,13 +6,14 @@
     padding: 0;
 }
 
+header.header{ overflow: hidden; }
+
 .header{
     display: flex;
     flex-flow: row wrap;
     background-color: $header-bg;
     color: #fff;
     text-align: center;
-    overflow: hidden;
     
     h1{
         margin: auto;

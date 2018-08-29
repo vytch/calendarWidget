@@ -8,6 +8,7 @@ import moment from 'moment';
 import cx from 'classnames';
 import Button from 'core/Components/Button';
 import DayViewDropDown from 'core/Components/DayViewDropDown';
+import { formatDate } from 'js-utils/formatDate';
 import { Calendar } from 'react-calendar-component';
 import './style.scss';
 import { setIsSearching, updateMonthYear } from '../CalendarContainer/Actions/CalendarActions';
@@ -52,7 +53,7 @@ class DayView extends React.Component {
   }
 
   _handleChangeMonth = nextDate => {
-    const date = moment(nextDate).format('YYYYMMDD');
+    const date = formatDate(nextDate, 'YYYYMMDD');
     const {min, max} = this.props.minMax;
 
     // If not in range, don't do anything.

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IntroCopy from 'core/Components/IntroCopy';
-import moment from 'moment';
 import './style.scss';
-// import DayView from '../DayView/DayView';
 import CalendarContainer from '../CalendarContainer';
 
 /** This is the LandingPage component. */

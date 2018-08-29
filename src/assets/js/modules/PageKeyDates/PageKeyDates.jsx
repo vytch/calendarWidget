@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { formatDate } from 'js-utils/formatDate';
 import EventBlock from 'core/Components/EventBlock';
 import eventData from 'json/events.json';
 import './style.scss';
@@ -17,7 +17,7 @@ class PageKeyDates extends React.Component {
       .filter(date => date.keyDate)
       .map(day => {
         const days = this.state.keyDays;
-        const formated = moment(day.start).format('MMMM DD YYYY');
+        const formated = formatDate(day.start, 'MMMM DD YYYY');
         days.includes(formated) ? null : days.push(formated);
       });
   }
@@ -31,7 +31,7 @@ class PageKeyDates extends React.Component {
 
           {
             Object.values(eventData.events)
-              .filter(date => moment(date.start).format('MMMM DD YYYY') === day)
+              .filter(date => formatDate(date.start, 'MMMM DD YYYY') === day)
               .map(evnt => <EventBlock {...evnt} />)
           }
         </section>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, Header } from 'semantic-ui-react';
-import moment from 'moment';
+import { formatDate, addSubtract } from 'js-utils/formatDate';
 import { connect } from 'react-redux';
 import { updateMonthYear } from 'fed-modules/CalendarContainer/Actions/CalendarActions.js';
 import Button from '../Button';
@@ -88,8 +88,15 @@ class DayViewDropDown extends React.PureComponent {
     e.preventDefault();
     e.stopPropagation();
 
-    const addYear = moment(this.props.selectedDate).add(1, 'y').format('YYYYMMDD');
-    const subtractYear = moment(this.props.selectedDate).subtract(1, 'y').format('YYYYMMDD');
+    const addYear = addSubtract({
+      date: this.props.selectedDate,
+      amount: 1,
+    });
+
+    const subtractYear = addSubtract({
+      date: this.props.selectedDate,
+      amount: -1,
+    });
 
     direction === 'next'
       ? this.props.dispatch(updateMonthYear(addYear))
@@ -98,8 +105,9 @@ class DayViewDropDown extends React.PureComponent {
 
   // Updates calendar with selected month from dropdown
   _handleMonthChange = (e, month) => {
-    const year = moment(this.props.selectedDate).format('YYYY');
-    const day = moment(this.props.selectedDate).format('DD');
+    const date = this.props.selectedDate;
+    const year = formatDate(date, 'YYYY');
+    const day = formatDate(date, 'DD');
 
     this.props.dispatch(updateMonthYear(`${year}${month}${day}`));
   }
@@ -111,7 +119,7 @@ class DayViewDropDown extends React.PureComponent {
     // The trigger is the date displayed above the calendar
     const trigger = (
       <span>
-        { moment(selectedDate).format('MMMM YYYY') }
+        { formatDate(selectedDate, 'MMMM YYYY') }
       </span>
     );
 
@@ -131,7 +139,7 @@ class DayViewDropDown extends React.PureComponent {
           </svg>
         </button>
 
-        <span className="year-selected">{moment(selectedDate).format('YYYY')}</span>
+        <span className="year-selected">{ formatDate(selectedDate, 'YYYY') }</span>
 
         <button type="button" disabled={isMax} onClick={e => this._handleYearChange(e, 'next')}>
           <svg className="svg-arrows" viewBox="0 0 8 14">

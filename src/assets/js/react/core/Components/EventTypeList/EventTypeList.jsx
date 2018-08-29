@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import eventData from 'json/events.json';
-import moment from 'moment';
+import { formatDate } from 'js-utils/formatDate';
 import './style.scss';
 
 /** This is the EventTypeList component. */
 class EventTypeList extends React.PureComponent {
   state = {
     events: [],
-    currDay: this.props.day.format('YYYYMMDD'),
+    currDay: formatDate(this.props.day, 'YYYYMMDD'),
   }
 
   // first filter our the current day
   compareDays = event => {
-    const startDay = moment(event.start).format('YYYYMMDD');
+    const startDay = formatDate(event.start, 'YYYYMMDD');
 
     return startDay === this.state.currDay;
   }

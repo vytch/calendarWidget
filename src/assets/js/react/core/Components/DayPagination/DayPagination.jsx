@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { addSubtract } from 'js-utils/formatDate';
 import { withRouter } from 'react-router';
 import Button from '../Button';
 import './style.scss';
@@ -13,8 +13,8 @@ class DayPagination extends React.PureComponent {
 
   _handleClick = (id, direction) => {
     return direction === 'next'
-      ? this.routeChange(moment(id).add(1, 'd').format('YYYYMMDD'))
-      : this.routeChange(moment(id).subtract(1, 'd').format('YYYYMMDD'));
+      ? this.routeChange(addSubtract({ date: id, amount: 1, type: 'd' }))
+      : this.routeChange(addSubtract({ date: id, amount: -1, type: 'd' }));
   }
 
   render() {

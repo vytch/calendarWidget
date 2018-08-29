@@ -1,32 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import moment from 'moment';
 import EventBlock from 'core/Components/EventBlock';
 import Button from 'core/Components/Button';
 import DayPagination from 'core/Components/DayPagination';
 import IconButton from 'core/Components/IconButton';
 import eventData from 'json/events.json';
+import { formatDate } from 'js-utils/formatDate';
 import './style.scss';
 
 /** This is the PageDayView component. */
 class PageDayView extends React.Component {
-  state = {
-    currentDay: moment(this.props.params.id).format('YYYYMMDD'),
+  _handleRouteBack() {
+    this.props.router.push('/');
   }
 
   render() {
+    const currentDay = formatDate(this.props.params.id, 'YYYYMMDD');
+    // const currentDay = moment(this.props.params.id).format('YYYYMMDD');
     const todaysEvents = Object.values(eventData.events).filter(evnt => {
-      const eventTime = moment(evnt.start).format('YYYYMMDD');
+      const eventTime = formatDate(evnt.start, 'YYYYMMDD');
 
-      return eventTime === this.state.currentDay;
+      return eventTime === currentDay;
     });
 
     return (
       // TODO:
       // Calculate school terms
       <div className="view-current-day">
-        <IconButton classes="btn-back" onClick={() => this._handleSearchState()}>
+        <IconButton classes="btn-back" onClick={() => this._handleRouteBack()}>
           <svg x="0px" y="0px" viewBox="0 0 18 20">
             <path
               className="svg-icon"
@@ -49,7 +51,7 @@ class PageDayView extends React.Component {
         </IconButton>
 
         <header className="align-center">
-          <h1>{ moment(this.props.params.id).format('DD MMMM YYYY') }</h1>
+          <h1>{ formatDate(this.props.params.id, 'DD MMMM YYYY') }</h1>
           <p>Week 22 (Term 3)</p>
         </header>
 
@@ -67,6 +69,7 @@ PageDayView.defaultProps = {
 
 PageDayView.propTypes = {
   params: PropTypes.object,
+  router: PropTypes.object.isRequired,
 };
 
 export default withRouter(PageDayView);
