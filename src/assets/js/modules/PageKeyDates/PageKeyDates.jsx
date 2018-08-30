@@ -7,13 +7,15 @@ import './style.scss';
 /** This is the PageKeyDates component. */
 class PageKeyDates extends React.Component {
   render() {
+    const keyEvents = Object.values(eventData.events).filter(date => date.keyDate);
+
     return (
       <div className="key-dates">
         <header className="align-center">
           <h1>Key Dates</h1>
         </header>
 
-        <FilteredEventList events={eventData.events} />
+        <FilteredEventList events={keyEvents} />
       </div>
     );
   }

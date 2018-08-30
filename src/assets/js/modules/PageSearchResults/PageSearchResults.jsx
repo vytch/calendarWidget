@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FilteredEventList from 'core/Components/FilteredEventList';
+import SearchResultsCriteria from 'core/Components/SearchResultsCriteria';
 import eventData from 'json/events.json';
 import './style.scss';
 
@@ -9,9 +10,11 @@ class PageSearchResults extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <h1>Search Results</h1>
+        <header className="search-header align-center">
+          <h1>Showing {eventData.events.length} event results</h1>
         </header>
+
+        <SearchResultsCriteria />
 
         <FilteredEventList events={eventData.events} />
       </div>

@@ -25,6 +25,15 @@ class Event extends React.Component {
           min: addSubtract({ amount: -17 }),
           max: addSubtract({ amount: 2 }),
         },
+        search: {
+          keywords: null,
+          categories: [],
+          tags: [],
+          range: {
+            start: null,
+            end: null,
+          },
+        },
       },
     });
     return (

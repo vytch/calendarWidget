@@ -6,8 +6,28 @@ html {
 body {
   padding: 0;
   margin: 0;
-  color: #555;
-  font-family: 'arial';
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #444;
+  background: $cream;
+}
+
+body,
+main.wrapper {
+  font-family: $avenir;
+}
+
+main.wrapper {
+  width: calc(100vw / 12 * 10);
+  margin: auto;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+svg {
+  .svg-black {
+    fill: $black;
+  }
 }
 
 *,

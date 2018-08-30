@@ -14,25 +14,25 @@ import './style.scss';
 
 const cbOptions = [
   {
-    name: 'search-types',
+    name: 'school',
     value: 'JS',
     label: 'Junior School (JS)',
     checked: true,
   },
   {
-    name: 'search-types',
+    name: 'school',
     value: 'JSS',
     label: 'Junior Secondary School (JSS)',
     checked: true,
   },
   {
-    name: 'search-types',
+    name: 'school',
     value: 'MS',
     label: 'Middle School (JS)',
     checked: true,
   },
   {
-    name: 'search-types',
+    name: 'school',
     value: 'SS',
     label: 'Secondary School (JS)',
     checked: true,
@@ -44,22 +44,81 @@ class CalendarSearch extends React.Component {
   constructor() {
     super();
     this.selector = '';
+    this.state = {
+      form: {
+        keywords: [],
+        school: [...cbOptions.map(e => e.value)],
+        category: [],
+        range: {
+          start: {},
+          end: {},
+        },
+      },
+    };
   }
 
-  _handleSearchState = () => {
-    this.props.dispatch(setIsSearching());
+  // Keeps the search view open if searching
+  _handleSearchState = () => this.props.dispatch(setIsSearching());
+
+  // used for semanticUI
+  _handleCategorySelection = (e, { name, value }) =>  this.updateFormState('category', value);
+
+  _handleInputValues = event => {
+    const _e = event.target;
+    const name = _e.name;
+    let value = _e.value;
+    let checkboxValues = this.state.form.school;
+
+    // If checkbox - we need different values
+    if (_e.type === 'checkbox') {
+      const filteredValues = checkboxValues.filter(e => e !== value);
+      _e.checked ? checkboxValues.push(value) : checkboxValues = filteredValues;
+      value = checkboxValues;
+    }
+
+    // sort keywords into arrays
+    if (name === 'keywords') {
+      value = value.includes(',') ? value.split('  ').join(' ').split(',') : [value.trim()];
+    }
+
+    this.updateFormState(name, value);
+  }
+
+  _handleSubmit() {
+    console.log('test');
+  }
+
+  updateFormState = (name, val) => {
+    this.setState({
+      ...this.state,
+      form: {
+        ...this.state.form,
+        [name]: val,
+      },
+    });
   }
 
   componentDidMount = () => {
     const el = this.selector;
-    console.log(el);
     $(this.selector).daterangepicker({}, (start, end) => {
-      // TODO: This will be the submitted date data
-      console.log(`${start.format('YYYYMMDD')} ${end.format('YYYYMMDD')}`);
+      // this callback function runs on change
+      this.setState({
+        ...this.state,
+        form: {
+          ...this.state.form,
+          range: {
+            ...this.state.range,
+            start: start.format('YYYYMMDD'),
+            end: end.format('YYYYMMDD'),
+          },
+        },
+      });
     });
   }
 
   render() {
+    const { keywords, category } = this.state.form;
+    // TODO: Get options from database
     const options = [
       {key: 'option-1', text: 'Option 1', value: 'option-1'},
       {key: 'option-2', text: 'Option 2', value: 'option-2'},
@@ -69,7 +128,7 @@ class CalendarSearch extends React.Component {
     ];
 
     return (
-      <div className="calendar-search form">
+      <form className="calendar-search form">
         <h3>
           <IconButton onClick={() => this._handleSearchState()}>
             <svg x="0px" y="0px" viewBox="0 0 18 20">
@@ -98,29 +157,29 @@ class CalendarSearch extends React.Component {
         {/* TODO: Create form components */}
         <div className="form-group">
           <label htmlFor="search-keywords">Keywords</label>
-          <input id="search-keywords" name="search-keywords" type="text" />
+          <input id="search-keywords" name="keywords" type="text" value={keywords} onChange={this._handleInputValues} />
         </div>
 
-        <CheckboxGroup label={'School'} options={cbOptions} />
+        <CheckboxGroup label={'School'} options={cbOptions} onChange={this._handleInputValues} />
 
         <div className="form-group">
           <label htmlFor="search-category">Category</label>
-          <Dropdown fluid multiple selection options={options} />
+          <Dropdown fluid multiple selection options={options} onChange={this._handleCategorySelection} value={category} />
         </div>
 
         <div className="form-group">
           <label htmlFor="search-dates">Date</label>
           {/* TODO: Calculate 20yr range for min max valus */}
-          <input ref={n => this.selector = n} type="input" name="search-dates" id="search-dates" />
+          <input ref={n => this.selector = n} type="input" name="range" id="search-dates" />
         </div>
 
         <footer className="form-actions">
           {/* TODO: Make this an api request */}
-          <Link to="/search-results">
-            <Button label={'Search Events'} />
-          </Link>
+          {/* <Link to="/search-results"> */}
+          <Button label={'Search Events'} onClick={() => this._handleSubmit} />
+          {/* </Link> */}
         </footer>
-      </div>
+      </form>
     );
   }
 }

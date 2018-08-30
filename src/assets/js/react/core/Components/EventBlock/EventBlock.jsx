@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'core/Components/Button';
+import EventTags from 'core/Components/EventTags';
 import './style.scss';
 
 /** This is the EventBlock component. */
 class EventBlock extends React.PureComponent {
   render() {
-    let i = 0;
     const categories = this.props.categories.toString().split(',').join(', ');
     const isImportant = this.props.important ? <div className="event-alert">Important Date</div> : null;
-    const tags = this.props.tags.map(tag => {
-      return (
-        <li key={`e-${this.props.id}-${i += 1}-${tag}`} className="event-tag" data-type={tag}>
-          <div className="event-tag-indicator" />
-          { tag }
-        </li>
-      );
-    });
 
     const footer = (
       <footer className="event-block-footer">
@@ -51,9 +43,7 @@ class EventBlock extends React.PureComponent {
             </li>
           </ul>
 
-          <ul className="event-tags">
-            { tags }
-          </ul>
+          <EventTags type={'eventResults'} tags={this.props.tags} />
 
           <div className="event-actions">
             <Button label={'Add to calendar'} btnClass={'btn-secondary'} />
@@ -67,7 +57,6 @@ class EventBlock extends React.PureComponent {
 }
 
 EventBlock.defaultProps = {
-  id: null,
   name: null,
   start: null,
   end: null,
@@ -80,7 +69,6 @@ EventBlock.defaultProps = {
 };
 
 EventBlock.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string.isRequired,
   start: PropTypes.string.isRequired,
   end: PropTypes.string,

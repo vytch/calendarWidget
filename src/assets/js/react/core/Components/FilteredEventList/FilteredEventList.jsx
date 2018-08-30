@@ -13,7 +13,6 @@ class FilteredEventList extends React.Component {
   componentWillMount() {
     // Get all the single days so there's no duplicates
     Object.values(this.props.events)
-      .filter(date => date.keyDate)
       .map(day => {
         const days = this.state.filteredDays;
         const formated = formatDate(day.start, 'MMMM DD YYYY');
@@ -27,7 +26,7 @@ class FilteredEventList extends React.Component {
     const days = this.state.filteredDays.map(day => {
       return (
         <section key={`keyDay-${day}`} className="key-date">
-          <h2>{day}</h2>
+          <h2 className="key-date-title">{day}</h2>
 
           {
             Object.values(this.props.events)

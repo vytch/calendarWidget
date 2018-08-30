@@ -1,0 +1,38 @@
+.search-criteria{
+    &, *{ list-style: none; }
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-weight: 500;
+    margin: 3rem 0 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid $divider;
+    color: $primary;
+
+    &-item{
+        margin-bottom: 1.5rem; 
+
+        &:nth-child(odd) { width: 60%; }
+        &:nth-child(even) { width: 40%; }
+    }
+
+    &-label,
+    &-value{ display: inline-block; }
+
+    &-label{
+        font-weight: 800;
+        width: 120px;
+        text-align: right;
+        margin-right: 1rem;
+        color: $primary;
+    }
+
+    .event-tag{
+        &, &s{ display: inline-block; }
+
+        width: auto;
+        
+        + .event-tag { margin-left: 1.5rem; }
+    }
+}
