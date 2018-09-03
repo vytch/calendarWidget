@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import FilteredEventList from 'core/Components/FilteredEventList';
 import eventData from 'json/events.json';
 import './style.scss';

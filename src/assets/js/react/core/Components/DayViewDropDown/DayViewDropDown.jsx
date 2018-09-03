@@ -4,7 +4,6 @@ import { Dropdown, Header } from 'semantic-ui-react';
 import { formatDate, addSubtract } from 'js-utils/formatDate';
 import { connect } from 'react-redux';
 import { updateMonthYear } from 'fed-modules/CalendarContainer/Actions/CalendarActions.js';
-import Button from '../Button';
 import './style.scss';
 
 const options = [

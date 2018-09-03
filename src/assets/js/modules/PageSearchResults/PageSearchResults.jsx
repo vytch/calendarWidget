@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import FilteredEventList from 'core/Components/FilteredEventList';
 import SearchResultsCriteria from 'core/Components/SearchResultsCriteria';
 import eventData from 'json/events.json';
+// import { connect } from 'react-redux';
 import './style.scss';
 
 /** This is the PageSearchResults component. */
@@ -26,6 +27,14 @@ PageSearchResults.defaultProps = {
 };
 
 PageSearchResults.propTypes = {
+  // loading: PropTypes.bool.isRequired,
 };
 
+// const mapStateToProps = state => {
+//   return {
+//     loading: state.search.loading,
+//   }
+// };
+
 export default PageSearchResults;
+// export default connect(mapStateToProps)(PageSearchResults);

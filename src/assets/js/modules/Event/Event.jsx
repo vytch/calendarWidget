@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import KeyDates from 'fed-modules/PageKeyDates';
@@ -7,7 +7,8 @@ import SearchResults from 'fed-modules/PageSearchResults';
 import EventLayout from 'react-module/EventLayout';
 import {Provider} from 'react-redux';
 import { formatDate, addSubtract } from 'js-utils/formatDate';
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import theState from 'reducers/state';
 import appStore from './Stores/appStore';
 import './semantic.css';
 
@@ -17,24 +18,7 @@ import './style.scss';
 class Event extends React.Component {
   render() {
     const store = appStore({
-      reducer: {
-        testing: 'hello world',
-        isSearching: false,
-        selectedDate: formatDate({}, 'YYYYMMDD'),
-        minMax: {
-          min: addSubtract({ amount: -17 }),
-          max: addSubtract({ amount: 2 }),
-        },
-        search: {
-          keywords: null,
-          categories: [],
-          tags: [],
-          range: {
-            start: null,
-            end: null,
-          },
-        },
-      },
+      reducer: Object.values(theState)[0],
     });
     return (
       <div>

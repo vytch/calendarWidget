@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import EventBlock from 'core/Components/EventBlock';
-import Button from 'core/Components/Button';
 import DayPagination from 'core/Components/DayPagination';
 import eventData from 'json/events.json';
 import { formatDate } from 'js-utils/formatDate';
-import CalendarBackButton from 'core/Components/CalendarBackButton';
 import './style.scss';
 
 /** This is the PageDayView component. */

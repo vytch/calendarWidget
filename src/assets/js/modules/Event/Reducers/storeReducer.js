@@ -1,24 +1,25 @@
-export default function storeReducer(state = { testing: ''}, action) {
+import * as actionTypes from './actionTypes';
+import theState from './state';
+
+const updateReducer = (oldState, newState) => {
+  return {
+    ...oldState,
+    ...newState,
+  };
+};
+
+export default function storeReducer(state = theState, action) {
   switch (action.type) {
-  case 'UPDATE_TESTING':
-    return {
-      ...state,
-      testing: action.data,
-    };
+  case actionTypes.TOGGLE_SEARCHING: return updateReducer({ ...state }, { isSearching: !state.isSearching });
     break;
 
-  case 'TOGGLE_SEARCHING':
-    return {
-      ...state,
-      isSearching: !state.isSearching,
-    };
+  case actionTypes.UPDATE_MONTHYEAR: return updateReducer({...state}, { selectedDate: action.val });
     break;
 
-  case 'UPDATE_MONTHYEAR':
-    return {
-      ...state,
-      selectedDate: action.val,
-    };
+  // Search Reducers
+  case actionTypes.SEARCH_LOADING: return updateReducer({...state}, {
+    search: updateReducer(...state.search, { loading: action.bool }),
+  });
     break;
 
   default:

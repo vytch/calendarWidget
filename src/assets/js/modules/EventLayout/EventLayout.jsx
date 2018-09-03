@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
 import CalendarBackButton from 'core/Components/CalendarBackButton/CalendarBackButton';
 import Header from 'core/Components/Header';
 import {updateTesting} from './Actions/TestingActions';

@@ -17,13 +17,6 @@ import { setIsSearching, updateMonthYear } from '../CalendarContainer/Actions/Ca
 
 /** This is the DayView component. */
 class DayView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      date: moment(),
-    };
-  }
-
   _handleSearchState = () => {
     this.props.dispatch(setIsSearching());
   }
@@ -62,7 +55,7 @@ class DayView extends React.Component {
     this.props.dispatch(updateMonthYear(date));
   }
 
-  onRenderHeader({ date, onPrevMonth, onNextMonth }) {
+  onRenderHeader({ onPrevMonth, onNextMonth }) { // removed date arg
     return (
       <header>
         <div className="Calendar-header">
@@ -110,6 +103,7 @@ class DayView extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h3>MLC Calendar of events</h3>

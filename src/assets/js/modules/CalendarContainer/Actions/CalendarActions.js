@@ -1,12 +1,14 @@
+import * as actionTypes from 'reducers/actionTypes';
+
 const setIsSearching = () => {
   return {
-    type: 'TOGGLE_SEARCHING',
+    type: actionTypes.TOGGLE_SEARCHING,
   };
 };
 
 const updateMonthYear = val => {
   return {
-    type: 'UPDATE_MONTHYEAR',
+    type: actionTypes.UPDATE_MONTHYEAR,
     val,
   };
 };

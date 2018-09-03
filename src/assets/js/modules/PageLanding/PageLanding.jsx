@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import IntroCopy from 'core/Components/IntroCopy';
 import './style.scss';
 import CalendarContainer from '../CalendarContainer';

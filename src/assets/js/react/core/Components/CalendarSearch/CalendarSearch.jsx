@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router';
-import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarActions.js';
+import { withRouter } from 'react-router';
+import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarActions';
+import { getSearchResults } from 'fed-modules/PageSearchResults/Actions/SearchActions';
 import { Dropdown } from 'semantic-ui-react';
 import daterangepicker from 'daterangepicker';
 import $ from 'jquery';
 import CheckboxGroup from '../CheckboxGroup';
 import Button from '../Button';
 import IconButton from '../IconButton';
-
 import './style.scss';
 
 const cbOptions = [
@@ -58,10 +58,10 @@ class CalendarSearch extends React.Component {
   }
 
   // Keeps the search view open if searching
-  _handleSearchState = () => this.props.dispatch(setIsSearching());
+  _handleSearchState = () => this.props.setIsSearching();
 
   // used for semanticUI
-  _handleCategorySelection = (e, { name, value }) =>  this.updateFormState('category', value);
+  _handleCategorySelection = (e, { value }) =>  this.updateFormState('category', value);
 
   _handleInputValues = event => {
     const _e = event.target;
@@ -85,34 +85,35 @@ class CalendarSearch extends React.Component {
   }
 
   _handleSubmit() {
-    console.log('test');
+    this.props.getSearchResults(this.state.form);
+    this.props.router.push('search-results');
   }
 
   updateFormState = (name, val) => {
-    this.setState({
-      ...this.state,
+    this.setState(prevState => ({
+      ...prevState,
       form: {
-        ...this.state.form,
+        ...prevState.form,
         [name]: val,
       },
-    });
+    }));
   }
 
   componentDidMount = () => {
     const el = this.selector;
-    $(this.selector).daterangepicker({}, (start, end) => {
+    $(el).daterangepicker({}, (start, end) => {
       // this callback function runs on change
-      this.setState({
-        ...this.state,
+      this.setState(prevState => ({
+        ...prevState,
         form: {
-          ...this.state.form,
+          ...prevState.form,
           range: {
-            ...this.state.range,
+            ...prevState.range,
             start: start.format('YYYYMMDD'),
             end: end.format('YYYYMMDD'),
           },
         },
-      });
+      }));
     });
   }
 
@@ -176,7 +177,7 @@ class CalendarSearch extends React.Component {
         <footer className="form-actions">
           {/* TODO: Make this an api request */}
           {/* <Link to="/search-results"> */}
-          <Button label={'Search Events'} onClick={() => this._handleSubmit} />
+          <Button label={'Search Events'} onClick={() => this._handleSubmit()} />
           {/* </Link> */}
         </footer>
       </form>
@@ -188,7 +189,16 @@ CalendarSearch.defaultProps = {
 };
 
 CalendarSearch.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired,
+  setIsSearching: PropTypes.func.isRequired,
+  getSearchResults: PropTypes.func.isRequired,
 };
 
-export default withRouter(connect()(CalendarSearch));
+const mapDispatchToProps = dispatch => {
+  return {
+    setIsSearching: () => dispatch(setIsSearching()),
+    getSearchResults: data => dispatch(getSearchResults(data)),
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(CalendarSearch));

@@ -43,6 +43,7 @@ module.exports = {
           'js-utils': path.resolve(__dirname, './src/assets/js/utils'),
           'react-module':  path.resolve(__dirname, './src/assets/js/modules'),
           'json':  path.resolve(__dirname, './src/assets/json'),
+          'reducers':  path.resolve(__dirname, './src/assets/js/modules/Event/Reducers'),
         }
    },
    plugins: [
