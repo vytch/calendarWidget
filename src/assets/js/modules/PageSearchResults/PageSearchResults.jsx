@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilteredEventList from 'core/Components/FilteredEventList';
 import SearchResultsCriteria from 'core/Components/SearchResultsCriteria';
+import { getSearchResults } from 'fed-modules/PageSearchResults/Actions/SearchActions';
 import Loader from 'core/Components/Loader';
 import eventData from 'json/events.json';
 import { connect } from 'react-redux';
@@ -9,7 +10,18 @@ import './style.scss';
 
 /** This is the PageSearchResults component. */
 class PageSearchResults extends React.Component {
+  componentDidMount() {
+    const prop = this.props;
+    // checks to see if it's loading and if any events have loaded, if not, it's most likely a browser load
+    !prop.loading && prop.results.length === 0 ? this._handleSearchRequest() : null;
+  }
+
+  _handleSearchRequest() {
+    this.props.getSearchResults(this.props.location.query);
+  }
+
   render() {
+    console.log(this.props);
     const SearchBody = (
       <div>
         <header className="search-header align-center">
@@ -47,6 +59,8 @@ PageSearchResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   results: PropTypes.array.isRequired,
   error: PropTypes.string,
+  getSearchResults: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -57,4 +71,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(PageSearchResults);
+const mapDispatchToProps = dispatch => {
+  return {
+    getSearchResults: data => dispatch(getSearchResults(data)),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageSearchResults);

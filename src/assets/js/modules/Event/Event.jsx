@@ -27,11 +27,12 @@ class Event extends React.Component {
           <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
             <Route path="/" component={EventLayout}>
               <IndexRoute component={PageLanding} />
-              <Route path=":search" component={PageLanding}>
+              <Route path="/search" component={PageLanding}>
                 <IndexRoute component={CalendarSearch} />
               </Route>
               <Route path="day/:id" component={DayView} />
               <Route path="key-dates" component={KeyDates} />
+              <Route path="search-results" component={SearchResults} />
             </Route>
           </Router>
         </Provider>

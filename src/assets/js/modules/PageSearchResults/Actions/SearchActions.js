@@ -30,7 +30,7 @@ export const getSearchResults = ({ keywords, school, category, range }) => {
     dispatch(setSearchLoading(true));
     dispatch(setSearchError(null)); // reset the error if re-searched
 
-    axios.get('http://localhost:3000/eventsasdas')
+    axios.get('http://localhost:3000/events')
       .then(({data}) => {
         dispatch(setSearchSuccess(data));
         dispatch(setSearchLoading(false));

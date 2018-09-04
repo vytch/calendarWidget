@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarActions';
 import { getSearchResults } from 'fed-modules/PageSearchResults/Actions/SearchActions';
 import { Dropdown } from 'semantic-ui-react';
+import { formatDate } from 'js-utils/formatDate';
 import daterangepicker from 'daterangepicker';
 import $ from 'jquery';
 import CheckboxGroup from '../CheckboxGroup';
@@ -49,10 +50,8 @@ class CalendarSearch extends React.Component {
         keywords: [],
         school: [...cbOptions.map(e => e.value)],
         category: [],
-        range: {
-          start: {},
-          end: {},
-        },
+        start: formatDate(new Date(), 'YYYYMMDD'),
+        end: formatDate(new Date(), 'YYYYMMDD'),
       },
     };
   }
@@ -85,10 +84,12 @@ class CalendarSearch extends React.Component {
   }
 
   _handleSubmit() {
-    this.props.getSearchResults(this.state.form);
-    const serialize = JSON.stringify(this.state.form).split(/[^\w,:]/g).join('').split(':').join('=');
-    console.log('[search string]', serialize);
-    this.props.router.push('search-results');
+    /*the 'serialize' adds a search query to the param so if the
+      page is refreshed / URL is shared, it still works. */
+    const form = this.state.form;
+    const serialize = Object.entries(form).map(([key, val]) => `${key}=${val}`).join('&');
+    this.props.getSearchResults(form);
+    this.props.router.push(`search-results?${serialize}`);
   }
 
   updateFormState = (name, val) => {
@@ -109,11 +110,8 @@ class CalendarSearch extends React.Component {
         ...prevState,
         form: {
           ...prevState.form,
-          range: {
-            ...prevState.range,
-            start: start.format('YYYYMMDD'),
-            end: end.format('YYYYMMDD'),
-          },
+          start: start.format('YYYYMMDD'),
+          end: end.format('YYYYMMDD'),
         },
       }));
     });

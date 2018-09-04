@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CalendarBackButton from 'core/Components/CalendarBackButton/CalendarBackButton';
+import SearchBackButton from 'core/Components/SearchBackButton/SearchBackButton';
 import Header from 'core/Components/Header';
-import {updateTesting} from './Actions/TestingActions';
 import './style.scss';
 
 /** This is the EventLayout component. */
@@ -18,11 +18,13 @@ class EventLayout extends React.Component {
   }
 
   render() {
-    const backButton = this.props.location.pathname === '/' ? null : <CalendarBackButton />;
+    const pathname = this.props.location.pathname;
+    const calendarButton = pathname === '/' ? null : <CalendarBackButton />;
+    const backButton = pathname === '/search-results' ? <SearchBackButton /> : calendarButton;
+    console.log(pathname);
     return (
       <div>
         <Header />
-
         { backButton }
         <main className="wrapper">
           {this.props.children}
