@@ -25,17 +25,19 @@ export const setSearchError = err => {
 
 
 export const getSearchResults = ({ keywords, school, category, range }) => {
-  console.log(keywords, school, category, range);
+  // console.log(keywords, school, category, range);
   return dispatch => {
-    dispatch(setSearchLoading, false);
-    axios.get('http://localhost:3000/events')
-      .then(res => {
-        dispatch(setSearchLoading, true);
-        console.log('[FROM ACTION]', res);
+    dispatch(setSearchLoading(true));
+    dispatch(setSearchError(null)); // reset the error if re-searched
+
+    axios.get('http://localhost:3000/eventsasdas')
+      .then(({data}) => {
+        dispatch(setSearchSuccess(data));
+        dispatch(setSearchLoading(false));
       })
       .catch(err => {
-        dispatch(setSearchLoading, false);
-        console.log(err);
+        dispatch(setSearchLoading(false));
+        dispatch(setSearchError('Something went wrong, please try again.'));
       });
   };
 };

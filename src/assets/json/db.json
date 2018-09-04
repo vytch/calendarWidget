@@ -1,4 +1,47 @@
 {
+  "content": [
+    {
+      "id": 1,
+      "section": "intro",
+      "title": "Lorem ipsum dolor sit amet",
+      "body": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius soluta nesciunt rem distinctio fuga, sequi vitae animi. Totam, quaerat sint consequatur ipsum placeat magnam, eius unde soluta eum, dicta officia.</p><p>Esse facilis optio recusandae hic incidunt aliquam, nisi odio. Blanditiis distinctio, tempore mollitia quaerat aliquam voluptas molestiae consequatur.</p>"
+    }
+  ],
+  "eventTypes": [
+    {
+      "type": "JS",
+      "name": "Junior School (JS)"
+    },
+    {
+      "type": "JSS",
+      "name": "Junior School (JSS)"
+    },
+    {
+      "type": "MS",
+      "name": "Junior School (MS)"
+    },
+    {
+      "type": "SS",
+      "name": "Junior School (SS)"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Category Name",
+      "slug": "categorySlugOne"
+    },
+    {
+      "id": 2,
+      "name": "Category Name",
+      "slug": "categorySlugTwo"
+    },
+    {
+      "id": 3,
+      "name": "Category Name",
+      "slug": "categorySlugThree"
+    }
+  ],
   "events": [
     {
       "id": 1,
@@ -8,9 +51,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JS",

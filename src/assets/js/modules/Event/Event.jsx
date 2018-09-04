@@ -4,6 +4,7 @@ import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import KeyDates from 'fed-modules/PageKeyDates';
 import SearchResults from 'fed-modules/PageSearchResults';
+import CalendarSearch from 'core/Components/CalendarSearch';
 import EventLayout from 'react-module/EventLayout';
 import {Provider} from 'react-redux';
 import { formatDate, addSubtract } from 'js-utils/formatDate';
@@ -26,9 +27,11 @@ class Event extends React.Component {
           <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
             <Route path="/" component={EventLayout}>
               <IndexRoute component={PageLanding} />
-              <Route path="demo/:id" component={DayView} />
+              <Route path=":search" component={PageLanding}>
+                <IndexRoute component={CalendarSearch} />
+              </Route>
+              <Route path="day/:id" component={DayView} />
               <Route path="key-dates" component={KeyDates} />
-              <Route path="search-results" component={SearchResults} />
             </Route>
           </Router>
         </Provider>

@@ -86,6 +86,8 @@ class CalendarSearch extends React.Component {
 
   _handleSubmit() {
     this.props.getSearchResults(this.state.form);
+    const serialize = JSON.stringify(this.state.form).split(/[^\w,:]/g).join('').split(':').join('=');
+    console.log('[search string]', serialize);
     this.props.router.push('search-results');
   }
 

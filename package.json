@@ -16,7 +16,7 @@
     "test": "jest --verbose --watch",
     "test:html": "htmlchecker-lite --config=config/htmlchecker.config.js",
     "plop": "plop --plopfile config/generators/index.js",
-    "api": "json-server --watch src/assets/json/db.json --delay=500"
+    "api": "json-server --watch src/assets/json/db.json --delay=1000"
   },
   "author": "",
   "license": "ISC",

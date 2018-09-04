@@ -2,6 +2,7 @@ import PageLanding from 'fed-modules/PageLanding';
 import DayView from 'fed-modules/PageDayView';
 import KeyDates from 'fed-modules/PageKeyDates';
 import SearchResults from 'fed-modules/PageSearchResults';
+import CalendarSearch from 'core/Components/CalendarSearch';
 import routeData from 'data/routeData.json';
 
 const routes = {
@@ -10,29 +11,32 @@ const routes = {
       path: '/',
       name: 'Home',
       component: PageLanding,
+      params: {
+        layout: 'Home',
+      },
     },
     {
-      path: '/demo',
-      name: 'Demo',
+      path: '/day',
+      name: 'Day',
       component: DayView,
       params: {
-        layout: 'Demo',
+        layout: 'Day',
       },
     },
     {
       path: '/kay-dates',
-      name: 'Key Dates',
+      name: 'KeyDates',
       component: KeyDates,
       params: {
-        layout: 'Key Dates',
+        layout: 'KeyDates',
       },
     },
     {
       path: '/search-results',
-      name: 'Search Results',
+      name: 'SearchResults',
       component: SearchResults,
       params: {
-        layout: 'Search Results',
+        layout: 'SearchResults',
       },
     },
   ],

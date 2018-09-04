@@ -23,7 +23,7 @@ class DayView extends React.Component {
 
   _handleDatePicked = date => {
     const str = date.format('YYYYMMDD');
-    this.props.router.push(`/demo/${str}`);
+    this.props.router.push(`/day/${str}`);
   }
 
   onRenderDay({ day, classNames, onPickDate }) {
@@ -103,7 +103,6 @@ class DayView extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <h3>MLC Calendar of events</h3>

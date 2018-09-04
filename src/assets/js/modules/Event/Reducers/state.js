@@ -8,7 +8,7 @@ const theState = {
     max: addSubtract({ amount: 2 }),
   },
   search: {
-    loading: true,
+    loading: false,
     keywords: null,
     categories: [],
     tags: [],
@@ -17,6 +17,7 @@ const theState = {
       end: null,
     },
     searchResults: [],
+    error: null,
   },
 };
 

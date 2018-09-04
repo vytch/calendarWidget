@@ -8,7 +8,7 @@ import './style.scss';
 /** This is the DayPagination component. */
 class DayPagination extends React.PureComponent {
   routeChange = str => {
-    this.props.router.push(`/demo/${str}`);
+    this.props.router.push(`/day/${str}`);
   }
 
   _handleClick = (id, direction) => {

@@ -15,13 +15,9 @@ class EventLayout extends React.Component {
 
   clicked(e) {
     e.preventDefault();
-    this.props.dispatch(updateTesting('Blah blah'));
   }
 
   render() {
-    console.log(this.props.location.pathname);
-    this.props.location.pathname === '/' ? console.log('home') : console.log('not home');
-
     const backButton = this.props.location.pathname === '/' ? null : <CalendarBackButton />;
     return (
       <div>
@@ -42,7 +38,6 @@ EventLayout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string, PropTypes.element, PropTypes.array,
   ]).isRequired,
-  dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 };
 
