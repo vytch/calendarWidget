@@ -6,6 +6,14 @@ import CalendarContainer from '../CalendarContainer';
 
 /** This is the LandingPage component. */
 class LandingPage extends React.Component {
+  componentDidMount() {
+    /*
+      1. Call all events to assign to calendar
+      2. Call event type info for Calendar legend
+      3. Call in intro content
+    */
+  }
+
   render() {
     return (
       <div className="col-2">

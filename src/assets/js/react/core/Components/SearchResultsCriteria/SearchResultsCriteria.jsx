@@ -5,6 +5,7 @@ import './style.scss';
 
 const tags = ['JS', 'JSS', 'MS', 'SS'];
 
+// TODO: MAKE THIS DYNAMIC
 /** This is the SearchResultsCriteria component. */
 class SearchResultsCriteria extends React.PureComponent {
   render() {
