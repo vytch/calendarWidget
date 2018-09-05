@@ -23,11 +23,12 @@ class IntroCopy extends React.PureComponent {
 
 IntroCopy.defaultProps = {
   title: 'Intro Title',
+  content: 'Content',
 };
 
 IntroCopy.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.string,
 };
 
 export default IntroCopy;

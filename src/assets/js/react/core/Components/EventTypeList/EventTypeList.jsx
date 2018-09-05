@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import eventData from 'json/events.json';
+import { connect } from 'react-redux';
 import { formatDate } from 'js-utils/formatDate';
 import './style.scss';
 
@@ -27,7 +27,7 @@ class EventTypeList extends React.PureComponent {
 
   componentWillMount() {
     // runs the above functions
-    Object.values(eventData.events).filter(this.compareDays).map(this.currentTags);
+    this.props.events.filter(this.compareDays).map(this.currentTags);
   }
 
   render() {
@@ -48,7 +48,14 @@ EventTypeList.defaultProps = {
 
 EventTypeList.propTypes = {
   day: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
-export default EventTypeList;
+const mapStateToProps = state => {
+  return {
+    events: state.reducer.events,
+  };
+};
+
+export default connect(mapStateToProps)(EventTypeList);
 

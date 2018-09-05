@@ -1,14 +1,22 @@
 import { formatDate, addSubtract } from 'js-utils/formatDate';
 
 const theState = {
-  isSearching: false,
+  appLoading: false,
+  categoryLoading: false,
+  introContent: {
+    title: null,
+    body: null,
+  },
   selectedDate: formatDate({}, 'YYYYMMDD'),
   minMax: {
     min: addSubtract({ amount: -17 }),
     max: addSubtract({ amount: 2 }),
   },
   categories: [],
-  categoryLoading: false,
+  eventTypes: [],
+  events: [],
+  terms: [],
+  publicHolidays: [],
   search: {
     loading: false,
     keywords: null,

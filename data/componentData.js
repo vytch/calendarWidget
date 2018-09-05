@@ -255,9 +255,14 @@ module.exports = [
                 "type": { "name": "object" },
                 "required": true,
                 "description": ""
+            },
+            "events": {
+                "type": { "name": "array" },
+                "required": true,
+                "description": ""
             }
         },
-        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport eventData from 'json/events.json';\r\nimport { formatDate } from 'js-utils/formatDate';\r\nimport './style.scss';\r\n\r\n/** This is the EventTypeList component. */\r\nclass EventTypeList extends React.PureComponent {\r\n  state = {\r\n    events: [],\r\n    currDay: formatDate(this.props.day, 'YYYYMMDD'),\r\n  }\r\n\r\n  // first filter our the current day\r\n  compareDays = event => {\r\n    const startDay = formatDate(event.start, 'YYYYMMDD');\r\n\r\n    return startDay === this.state.currDay;\r\n  }\r\n\r\n  // then push the tags into current state\r\n  currentTags = ({ tags }) => {\r\n    tags.map(tag => {\r\n      this.state.events.includes(tag) ? null : this.state.events.push(tag);\r\n    });\r\n  };\r\n\r\n  componentWillMount() {\r\n    // runs the above functions\r\n    Object.values(eventData.events).filter(this.compareDays).map(this.currentTags);\r\n  }\r\n\r\n  render() {\r\n    const currentEvents = this.state.events.map(event => {\r\n      return <li key={`${this.props.day}-${event}`} data-type={event}>{event}</li>;\r\n    });\r\n\r\n    return (\r\n      <ul className=\"event-list-type\">\r\n        { currentEvents }\r\n      </ul>\r\n    );\r\n  }\r\n}\r\n\r\nEventTypeList.defaultProps = {\r\n};\r\n\r\nEventTypeList.propTypes = {\r\n  day: PropTypes.object.isRequired,\r\n};\r\n\r\nexport default EventTypeList;\r\n\r\n",
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport { connect } from 'react-redux';\r\nimport { formatDate } from 'js-utils/formatDate';\r\nimport './style.scss';\r\n\r\n/** This is the EventTypeList component. */\r\nclass EventTypeList extends React.PureComponent {\r\n  state = {\r\n    events: [],\r\n    currDay: formatDate(this.props.day, 'YYYYMMDD'),\r\n  }\r\n\r\n  // first filter our the current day\r\n  compareDays = event => {\r\n    const startDay = formatDate(event.start, 'YYYYMMDD');\r\n\r\n    return startDay === this.state.currDay;\r\n  }\r\n\r\n  // then push the tags into current state\r\n  currentTags = ({ tags }) => {\r\n    tags.map(tag => {\r\n      this.state.events.includes(tag) ? null : this.state.events.push(tag);\r\n    });\r\n  };\r\n\r\n  componentWillMount() {\r\n    // runs the above functions\r\n    this.props.events.filter(this.compareDays).map(this.currentTags);\r\n  }\r\n\r\n  render() {\r\n    const currentEvents = this.state.events.map(event => {\r\n      return <li key={`${this.props.day}-${event}`} data-type={event}>{event}</li>;\r\n    });\r\n\r\n    return (\r\n      <ul className=\"event-list-type\">\r\n        { currentEvents }\r\n      </ul>\r\n    );\r\n  }\r\n}\r\n\r\nEventTypeList.defaultProps = {\r\n};\r\n\r\nEventTypeList.propTypes = {\r\n  day: PropTypes.object.isRequired,\r\n  events: PropTypes.array.isRequired,\r\n};\r\n\r\nconst mapStateToProps = state => {\r\n  return {\r\n    events: state.reducer.events,\r\n  };\r\n};\r\n\r\nexport default connect(mapStateToProps)(EventTypeList);\r\n\r\n",
         "examples": []
     },
     {
@@ -346,11 +351,12 @@ module.exports = [
             },
             "content": {
                 "type": { "name": "string" },
-                "required": true,
-                "description": ""
+                "required": false,
+                "description": "",
+                "defaultValue": { "value": "'Content'", "computed": false }
             }
         },
-        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the IntroCopy component. */\r\nclass IntroCopy extends React.PureComponent {\r\n  createMarkUp() {\r\n    return {__html: this.props.content};\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      <article>\r\n        <header>\r\n          <h2>{ this.props.title }</h2>\r\n        </header>\r\n\r\n        <div dangerouslySetInnerHTML={this.createMarkUp()} />\r\n      </article>\r\n    );\r\n  }\r\n}\r\n\r\nIntroCopy.defaultProps = {\r\n  title: 'Intro Title',\r\n};\r\n\r\nIntroCopy.propTypes = {\r\n  title: PropTypes.string.isRequired,\r\n  content: PropTypes.string.isRequired,\r\n};\r\n\r\nexport default IntroCopy;\r\n\r\n",
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport './style.scss';\r\n\r\n/** This is the IntroCopy component. */\r\nclass IntroCopy extends React.PureComponent {\r\n  createMarkUp() {\r\n    return {__html: this.props.content};\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      <article>\r\n        <header>\r\n          <h2>{ this.props.title }</h2>\r\n        </header>\r\n\r\n        <div dangerouslySetInnerHTML={this.createMarkUp()} />\r\n      </article>\r\n    );\r\n  }\r\n}\r\n\r\nIntroCopy.defaultProps = {\r\n  title: 'Intro Title',\r\n  content: 'Content',\r\n};\r\n\r\nIntroCopy.propTypes = {\r\n  title: PropTypes.string,\r\n  content: PropTypes.string,\r\n};\r\n\r\nexport default IntroCopy;\r\n\r\n",
         "examples": []
     },
     {

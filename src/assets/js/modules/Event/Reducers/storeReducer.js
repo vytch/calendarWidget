@@ -2,9 +2,6 @@ import * as actionTypes from './actionTypes';
 import theState from './state';
 
 const updateReducer = (oldState, newState) => {
-  console.group('Reducer');
-  console.log(oldState, newState);
-  console.groupEnd();
   return {
     ...oldState,
     ...newState,
@@ -13,6 +10,30 @@ const updateReducer = (oldState, newState) => {
 
 export default function storeReducer(state = theState, action) {
   switch (action.type) {
+  case actionTypes.SET_INTRO: return updateReducer({...state}, {
+    introContent: updateReducer({...state.introContent}, {
+      title: action.data.title,
+      body: action.data.body,
+    }),
+  });
+    break;
+
+  case actionTypes.SET_APPLOADING: return updateReducer({...state}, { appLoading: action.bool });
+    break;
+
+  case actionTypes.SET_ALLDATA:
+    return updateReducer({...state}, {
+      introContent: updateReducer({...state.introContent}, {
+        title: action.data.introContent.title,
+        body: action.data.introContent.body,
+      }),
+      categories: action.data.categories,
+      eventTypes: action.data.eventTypes,
+      events: action.data.events,
+      terms: action.data.terms,
+      publicHolidays: action.data.publicHolidays,
+    });
+    break;
 
   // Landing page calendar toggles
   //================================================================

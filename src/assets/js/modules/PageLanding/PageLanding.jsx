@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import IntroCopy from 'core/Components/IntroCopy';
+import Loader from 'core/Components/Loader';
 import './style.scss';
 import CalendarContainer from '../CalendarContainer';
 
@@ -16,18 +17,25 @@ class LandingPage extends React.Component {
   }
 
   render() {
-    return (
+    const { title, body } = this.props.introContent;
+    const pageLanding = (
       <div className="col-2">
         <section>
           <IntroCopy
-            title={'Lorem ipsum dolor sit amet'}
-            content={'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius soluta nesciunt rem distinctio fuga, sequi vitae animi. Totam, quaerat sint consequatur ipsum placeat magnam, eius unde soluta eum, dicta officia.</p><p>Esse facilis optio recusandae hic incidunt aliquam, nisi odio. Blanditiis distinctio, tempore mollitia quaerat aliquam voluptas molestiae consequatur.</p>'}
+            title={title}
+            content={body}
           />
         </section>
 
         <section>
           <CalendarContainer location={this.props.location.pathname} />
         </section>
+      </div>
+    );
+
+    return (
+      <div>
+        { this.props.appLoading ? <Loader /> : pageLanding }
       </div>
     );
   }
@@ -38,6 +46,15 @@ LandingPage.defaultProps = {
 
 LandingPage.propTypes = {
   location: PropTypes.object.isRequired,
+  appLoading: PropTypes.bool.isRequired,
+  introContent: PropTypes.object.isRequired,
 };
 
-export default withRouter(LandingPage);
+const mapStateToProps = state => {
+  return {
+    appLoading: state.reducer.appLoading,
+    introContent: state.reducer.introContent,
+  };
+};
+
+export default connect(mapStateToProps)(LandingPage);

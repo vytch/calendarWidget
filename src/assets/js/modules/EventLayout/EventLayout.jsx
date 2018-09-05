@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CalendarBackButton from 'core/Components/CalendarBackButton/CalendarBackButton';
 import SearchBackButton from 'core/Components/SearchBackButton/SearchBackButton';
 import Header from 'core/Components/Header';
-import { getCategories } from './Actions/AppActions';
+import { getAllData } from 'reducers/Actions/AppActions';
 import './style.scss';
 
 /** This is the EventLayout component. */
@@ -19,7 +19,7 @@ class EventLayout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCategories();
+    this.props.getAllData();
   }
 
   render() {
@@ -46,12 +46,12 @@ EventLayout.propTypes = {
     PropTypes.string, PropTypes.element, PropTypes.array,
   ]).isRequired,
   location: PropTypes.object.isRequired,
-  getCategories: PropTypes.func.isRequired,
+  getAllData: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategories: () => dispatch(getCategories()),
+    getAllData: () => dispatch(getAllData()),
   };
 };
 
