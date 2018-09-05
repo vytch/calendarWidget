@@ -6,6 +6,7 @@ import { setIsSearching } from 'fed-modules/CalendarContainer/Actions/CalendarAc
 import { getSearchResults } from 'fed-modules/PageSearchResults/Actions/SearchActions';
 import { Dropdown } from 'semantic-ui-react';
 import { formatDate } from 'js-utils/formatDate';
+import Loader from 'core/Components/Loader';
 import daterangepicker from 'daterangepicker';
 import $ from 'jquery';
 import CheckboxGroup from '../CheckboxGroup';
@@ -57,7 +58,7 @@ class CalendarSearch extends React.Component {
   }
 
   // Keeps the search view open if searching
-  _handleSearchState = () => this.props.setIsSearching();
+  _handleSearchState = () => this.props.router.push('/');
 
   // used for semanticUI
   _handleCategorySelection = (e, { value }) =>  this.updateFormState('category', value);
@@ -119,14 +120,9 @@ class CalendarSearch extends React.Component {
 
   render() {
     const { keywords, category } = this.state.form;
-    // TODO: Get options from database
-    const options = [
-      {key: 'option-1', text: 'Option 1', value: 'option-1'},
-      {key: 'option-2', text: 'Option 2', value: 'option-2'},
-      {key: 'option-3', text: 'Option 3', value: 'option-3'},
-      {key: 'option-4', text: 'Option 4', value: 'option-4'},
-      {key: 'option-5', text: 'Option 5', value: 'option-5'},
-    ];
+    const dropdown = this.props.categoryLoading
+      ? <Loader />
+      : <Dropdown fluid multiple selection options={this.props.categories} onChange={this._handleCategorySelection} value={category} />;
 
     return (
       <form className="calendar-search form">
@@ -165,7 +161,7 @@ class CalendarSearch extends React.Component {
 
         <div className="form-group">
           <label htmlFor="search-category">Category</label>
-          <Dropdown fluid multiple selection options={options} onChange={this._handleCategorySelection} value={category} />
+          { dropdown }
         </div>
 
         <div className="form-group">
@@ -190,15 +186,22 @@ CalendarSearch.defaultProps = {
 
 CalendarSearch.propTypes = {
   router: PropTypes.object.isRequired,
-  setIsSearching: PropTypes.func.isRequired,
   getSearchResults: PropTypes.func.isRequired,
+  categories: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  categoryLoading: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    categories: state.reducer.categories,
+    categoryLoading: state.reducer.categoryLoading,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setIsSearching: () => dispatch(setIsSearching()),
     getSearchResults: data => dispatch(getSearchResults(data)),
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(CalendarSearch));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CalendarSearch));

@@ -69,13 +69,13 @@ EventBlock.defaultProps = {
 };
 
 EventBlock.propTypes = {
-  name: PropTypes.string.isRequired,
-  start: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  start: PropTypes.string,
   end: PropTypes.string,
   allDay: PropTypes.bool,
-  location: PropTypes.string.isRequired,
-  categories: PropTypes.array,
-  tags: PropTypes.array,
+  location: PropTypes.string,
+  categories: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  tags: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   important: PropTypes.bool,
   url: PropTypes.string,
 };

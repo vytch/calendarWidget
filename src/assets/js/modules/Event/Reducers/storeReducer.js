@@ -13,10 +13,21 @@ const updateReducer = (oldState, newState) => {
 
 export default function storeReducer(state = theState, action) {
   switch (action.type) {
+
+  // Landing page calendar toggles
+  //================================================================
   case actionTypes.TOGGLE_SEARCHING: return updateReducer({...state}, { isSearching: !state.isSearching });
     break;
 
   case actionTypes.UPDATE_MONTHYEAR: return updateReducer({...state}, { selectedDate: action.val });
+    break;
+
+  // Get Categories
+  //================================================================
+  case actionTypes.SET_CATEGORIES: return updateReducer({...state}, { categories: action.data});
+    break;
+
+  case actionTypes.CATEGORY_LOADING: return updateReducer({...state}, { categoryLoading: action.bool });
     break;
 
   // Search Reducers

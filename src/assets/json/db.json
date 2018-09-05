@@ -27,19 +27,19 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "Category Name",
-      "slug": "categorySlugOne"
+      "key": "category-dd-1",
+      "text": "Category One",
+      "value": "categorySlugOne"
     },
     {
-      "id": 2,
-      "name": "Category Name",
-      "slug": "categorySlugTwo"
+      "key": "category-dd-2",
+      "text": "Category Two",
+      "value": "categorySlugTwo"
     },
     {
-      "id": 3,
-      "name": "Category Name",
-      "slug": "categorySlugThree"
+      "key": "category-dd-3",
+      "text": "Category Three",
+      "value": "categorySlugThree"
     }
   ],
   "events": [
@@ -72,9 +72,8 @@
       "allDay": false,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JS",
@@ -93,9 +92,8 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo"
       ],
       "tags": [
         "JS",
@@ -115,9 +113,7 @@
       "allDay": false,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne"
       ],
       "tags": [
         "JSS"
@@ -135,9 +131,7 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugThree"
       ],
       "tags": [
         "MS",
@@ -156,9 +150,7 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugTwo"
       ],
       "tags": [
         "MS",
@@ -177,9 +169,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JSS",
@@ -198,9 +190,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JS",
@@ -219,9 +211,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JSS",
@@ -240,9 +232,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "MS",
@@ -261,9 +253,9 @@
       "allDay": true,
       "location": "Location Name",
       "categories": [
-        "Category name",
-        "Category name",
-        "Category name"
+        "categorySlugOne",
+        "categorySlugTwo",
+        "categorySlugThree"
       ],
       "tags": [
         "JS"
@@ -272,7 +264,7 @@
       "keyDate": true,
       "url": null,
       "ics": null
-    },
+    }
   ],
   "terms": [
     {

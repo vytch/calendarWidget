@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import IntroCopy from 'core/Components/IntroCopy';
 import './style.scss';
 import CalendarContainer from '../CalendarContainer';
@@ -25,7 +26,7 @@ class LandingPage extends React.Component {
         </section>
 
         <section>
-          <CalendarContainer />
+          <CalendarContainer location={this.props.location.pathname} />
         </section>
       </div>
     );
@@ -36,6 +37,7 @@ LandingPage.defaultProps = {
 };
 
 LandingPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
-export default LandingPage;
+export default withRouter(LandingPage);

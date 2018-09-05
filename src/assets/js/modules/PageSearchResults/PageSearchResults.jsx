@@ -4,7 +4,6 @@ import FilteredEventList from 'core/Components/FilteredEventList';
 import SearchResultsCriteria from 'core/Components/SearchResultsCriteria';
 import { getSearchResults } from 'fed-modules/PageSearchResults/Actions/SearchActions';
 import Loader from 'core/Components/Loader';
-import eventData from 'json/events.json';
 import { connect } from 'react-redux';
 import './style.scss';
 
@@ -17,20 +16,23 @@ class PageSearchResults extends React.Component {
   }
 
   _handleSearchRequest() {
-    this.props.getSearchResults(this.props.location.query);
+    if (this.props.location.query) {
+      this.props.getSearchResults(this.props.location.query);
+    }
   }
 
   render() {
-    console.log(this.props);
+    const events = this.props.results;
+
     const SearchBody = (
       <div>
         <header className="search-header align-center">
-          <h1>Showing {eventData.events.length} event results</h1>
+          <h1>Showing {events.length} event results</h1>
         </header>
 
-        <SearchResultsCriteria />
+        <SearchResultsCriteria criteria={this.props.location.query} />
 
-        <FilteredEventList events={eventData.events} />
+        <FilteredEventList events={events} />
       </div>
     );
 
@@ -40,7 +42,7 @@ class PageSearchResults extends React.Component {
       </header>
     );
 
-    const results = this.props.results.length > 0 ? SearchBody : noResults;
+    const results = events.length > 0 ? SearchBody : noResults;
     const isLoading = this.props.loading ? <Loader /> : results;
 
     return (

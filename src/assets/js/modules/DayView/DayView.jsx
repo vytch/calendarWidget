@@ -18,7 +18,7 @@ import { setIsSearching, updateMonthYear } from '../CalendarContainer/Actions/Ca
 /** This is the DayView component. */
 class DayView extends React.Component {
   _handleSearchState = () => {
-    this.props.dispatch(setIsSearching());
+    this.props.router.push('/search');
   }
 
   _handleDatePicked = date => {

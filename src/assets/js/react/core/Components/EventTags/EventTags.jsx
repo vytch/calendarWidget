@@ -27,7 +27,7 @@ EventTags.defaultProps = {
 };
 
 EventTags.propTypes = {
-  tags: PropTypes.array.isRequired,
+  tags: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
   type: PropTypes.string.isRequired,
 };
 
