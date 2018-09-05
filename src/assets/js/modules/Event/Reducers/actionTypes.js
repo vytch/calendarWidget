@@ -1,6 +1,5 @@
 export const SET_APPLOADING = 'SET_APPLOADING';
 export const SET_ALLDATA = 'SET_ALLDATA';
-export const SET_INTRO = 'SET_INTRO';
 
 export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const CATEGORY_LOADING = 'CATEGORY_LOADING';

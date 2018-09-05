@@ -1,3 +1,30 @@
+.view-current-day{
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        background: none;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .btn-arrows{
+        $size: 34px;
+        width: $size;
+        height: $size;
+        border-radius: 0;
+        margin-top: 8px;
+        opacity: 1;
+        transition: opacity 0.2s ease-out;
+
+        &:hover{ 
+            background: none;
+            opacity: 0.5;
+        }
+        
+        svg{ height: 100%; width: auto;}
+    }
+}
+
 .align-center{
     text-align: center;
 }

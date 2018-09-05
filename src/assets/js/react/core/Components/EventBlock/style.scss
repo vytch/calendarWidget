@@ -1,3 +1,7 @@
+.no-events {
+    padding: 5vw 0;
+}
+
 .event {
     &-block {
         margin-top: 2rem;
@@ -10,6 +14,21 @@
         }
         li {
             margin-bottom: 1rem;
+        }
+
+        .icon{
+            $size: 20px;
+            display: inline-block;
+            vertical-align: sub;
+            width: $size;
+            height: $size;
+            margin-right: 10px;
+        }
+
+        .icon-sm{
+            $size: 15px;
+            width: $size;
+            height: $size;
         }
     }
     &-body {
@@ -63,7 +82,9 @@
     &-actions {
         text-align: right;
         .btn {
+            display: inline-block;
             height: 45px;
+            padding: 12px 25px;
         }
     }
     &-tag {

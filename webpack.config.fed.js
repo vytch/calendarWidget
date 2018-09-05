@@ -34,6 +34,7 @@ module.exports = {
             'node_modules'
         ],
         alias: {
+          'assets':  path.resolve(__dirname, './src/assets'),
           'core-sass':  path.resolve(__dirname, './src/assets/scss'),
           'data': path.resolve(__dirname, './data'),
           'core-partials': path.resolve(__dirname, './src/partials'),

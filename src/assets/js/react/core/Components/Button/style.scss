@@ -11,6 +11,7 @@ button,
     font-size: 14px;
     font-weight: 900;
     transition: background-color 0.2s ease-out;
+    text-decoration: none;
 
     &:hover{
         background-color: lighten($primary, 8%);
@@ -37,6 +38,10 @@ button,
             color: lighten($primary, 15%);
             background: rgba($black, 0.05);
         }
+    }
+
+    &-transparent{
+        background: none;
     }
     
     &-full{

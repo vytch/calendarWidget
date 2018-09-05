@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './style.scss';
 
 /** This is the CalendarLegend component. */
@@ -14,10 +15,11 @@ class CalendarLegend extends React.PureComponent {
       */
 
       <ul className="legend">
-        <li className="legend-item" data-type="JS">Junior School (JS)</li>
-        <li className="legend-item" data-type="JSS">Junior Secondary School (JSS)</li>
-        <li className="legend-item" data-type="MS">Middle School</li>
-        <li className="legend-item" data-type="SS">Senior School</li>
+        {
+          this.props.eventTypes.map(({ type, name }) => {
+            return <li key={`legend-${type}-${name}`} className="legend-item" data-type={type}>{name}</li>;
+          })
+        }
       </ul>
     );
   }
@@ -27,7 +29,14 @@ CalendarLegend.defaultProps = {
 };
 
 CalendarLegend.propTypes = {
+  eventTypes: PropTypes.array.isRequired,
 };
 
-export default CalendarLegend;
+const mapStateToProps = state => {
+  return {
+    eventTypes: state.reducer.eventTypes,
+  };
+};
+
+export default connect(mapStateToProps)(CalendarLegend);
 

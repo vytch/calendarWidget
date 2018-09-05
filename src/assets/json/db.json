@@ -14,15 +14,15 @@
     },
     {
       "type": "JSS",
-      "name": "Junior School (JSS)"
+      "name": "Junior Secondary School (JSS)"
     },
     {
       "type": "MS",
-      "name": "Junior School (MS)"
+      "name": "Middle School (MS)"
     },
     {
       "type": "SS",
-      "name": "Junior School (SS)"
+      "name": "Secondary School (SS)"
     }
   ],
   "categories": [
@@ -90,7 +90,7 @@
       "start": "2018-07-12T11:00",
       "end": "2018-07-13T00:00",
       "allDay": true,
-      "location": "Location Name",
+      "location": "Melbourne Campus",
       "categories": [
         "categorySlugOne",
         "categorySlugTwo"
@@ -209,7 +209,7 @@
       "start": "2018-08-13T12:00",
       "end": "2018-08-13T13:00",
       "allDay": true,
-      "location": "Location Name",
+      "location": "Another Location Name",
       "categories": [
         "categorySlugOne",
         "categorySlugTwo",

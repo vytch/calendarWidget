@@ -23,6 +23,7 @@ class FilteredEventList extends React.Component {
 
   render() {
     // create each section and assigns events to their corresponding days
+    console.log('[EVENTS]', this.state.filteredDays);
     const days = this.state.filteredDays.map(day => {
       return (
         <section key={`keyDay-${day}`} className="key-date">
