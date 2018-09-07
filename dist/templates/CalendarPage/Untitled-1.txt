@@ -1,0 +1,15 @@
+
+Calls:
+On App Load = {
+    All Events
+    Public Holidays
+    Terms
+    All Tags
+}
+
+Search Form = Categories
+Search = {
+    Defined results
+}
+
+Key dates = ?

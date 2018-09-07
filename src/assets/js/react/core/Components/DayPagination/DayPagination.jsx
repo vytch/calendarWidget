@@ -7,21 +7,11 @@ import './style.scss';
 
 /** This is the DayPagination component. */
 class DayPagination extends React.PureComponent {
-  routeChange = str => {
-    this.props.router.push(`/day/${str}`);
-  }
-
-  _handleClick = (id, direction) => {
-    return direction === 'next'
-      ? this.routeChange(addSubtract({ date: id, amount: 1, type: 'd' }))
-      : this.routeChange(addSubtract({ date: id, amount: -1, type: 'd' }));
-  }
-
   render() {
     return (
       <div className="footer-pagination">
-        <Button label={'Previous Day'} onClick={() => this._handleClick(this.props.params.id, 'prev')} />
-        <Button label={'Next Day'} onClick={() => this._handleClick(this.props.params.id, 'next')} />
+        <Button label={'Previous Day'} onClick={() => this.props.onHandleClick(this.props.params.id, 'prev')} />
+        <Button label={'Next Day'} onClick={() => this.props.onHandleClick(this.props.params.id, 'next')} />
       </div>
     );
   }
@@ -29,12 +19,11 @@ class DayPagination extends React.PureComponent {
 
 DayPagination.defaultProps = {
   params: {},
-  router: {},
 };
 
 DayPagination.propTypes = {
   params: PropTypes.object,
-  router: PropTypes.object,
+  onHandleClick: PropTypes.func.isRequired,
 };
 
 export default withRouter(DayPagination);

@@ -132,14 +132,13 @@ module.exports = [
                 "description": "",
                 "defaultValue": { "value": "{}", "computed": false }
             },
-            "router": {
-                "type": { "name": "object" },
-                "required": false,
-                "description": "",
-                "defaultValue": { "value": "{}", "computed": false }
+            "onHandleClick": {
+                "type": { "name": "func" },
+                "required": true,
+                "description": ""
             }
         },
-        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport { addSubtract } from 'js-utils/formatDate';\r\nimport { withRouter } from 'react-router';\r\nimport Button from '../Button';\r\nimport './style.scss';\r\n\r\n/** This is the DayPagination component. */\r\nclass DayPagination extends React.PureComponent {\r\n  routeChange = str => {\r\n    this.props.router.push(`/day/${str}`);\r\n  }\r\n\r\n  _handleClick = (id, direction) => {\r\n    return direction === 'next'\r\n      ? this.routeChange(addSubtract({ date: id, amount: 1, type: 'd' }))\r\n      : this.routeChange(addSubtract({ date: id, amount: -1, type: 'd' }));\r\n  }\r\n\r\n  render() {\r\n    return (\r\n      <div className=\"footer-pagination\">\r\n        <Button label={'Previous Day'} onClick={() => this._handleClick(this.props.params.id, 'prev')} />\r\n        <Button label={'Next Day'} onClick={() => this._handleClick(this.props.params.id, 'next')} />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nDayPagination.defaultProps = {\r\n  params: {},\r\n  router: {},\r\n};\r\n\r\nDayPagination.propTypes = {\r\n  params: PropTypes.object,\r\n  router: PropTypes.object,\r\n};\r\n\r\nexport default withRouter(DayPagination);\r\n\r\n",
+        "code": "import React from 'react';\r\nimport PropTypes from 'prop-types';\r\nimport { addSubtract } from 'js-utils/formatDate';\r\nimport { withRouter } from 'react-router';\r\nimport Button from '../Button';\r\nimport './style.scss';\r\n\r\n/** This is the DayPagination component. */\r\nclass DayPagination extends React.PureComponent {\r\n  render() {\r\n    return (\r\n      <div className=\"footer-pagination\">\r\n        <Button label={'Previous Day'} onClick={() => this.props.onHandleClick(this.props.params.id, 'prev')} />\r\n        <Button label={'Next Day'} onClick={() => this.props.onHandleClick(this.props.params.id, 'next')} />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nDayPagination.defaultProps = {\r\n  params: {},\r\n};\r\n\r\nDayPagination.propTypes = {\r\n  params: PropTypes.object,\r\n  onHandleClick: PropTypes.func.isRequired,\r\n};\r\n\r\nexport default withRouter(DayPagination);\r\n\r\n",
         "examples": []
     },
     {

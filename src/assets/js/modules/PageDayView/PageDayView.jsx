@@ -10,6 +10,10 @@ import './style.scss';
 
 /** This is the PageDayView component. */
 class PageDayView extends React.Component {
+  routeChange = str => {
+    this.props.router.push(`/day/${str}`);
+  }
+
   _handleClick = (id, direction) => {
     return direction === 'next'
       ? this.routeChange(addSubtract({ date: id, amount: 1, type: 'd' }))
@@ -35,12 +39,13 @@ class PageDayView extends React.Component {
       events = todaysEvents.map(e => <EventBlock key={`event-${e.id}`} {...e} />);
     }
 
+    const { id } = this.props.params;
     return (
       // TODO:
       // Calculate school terms
       <div className="view-current-day">
         <header className="view-current-day-header align-center">
-          <button className="btn-arrows btn-transparent" type="button" disabled="false" onClick={e => this._handleClick(e, 'prev')}>
+          <button className="btn-arrows btn-transparent" type="button" onClick={() => this._handleClick(id, 'prev')}>
             <svg className="svg-arrows" viewBox="0 0 8 14">
               <path
                 className="svg-black"
@@ -53,10 +58,10 @@ class PageDayView extends React.Component {
 
           <div>
             <h1>{formatDate(this.props.params.id, 'DD MMMM YYYY')}</h1>
-            <p>Week 22 (Term 3)</p>
+            <p>Week {formatDate(this.props.params.id)} (Term 3)</p>
           </div>
 
-          <button className="btn-arrows btn-transparent" type="button" disabled="false" onClick={e => this._handleClick(e, 'next')}>
+          <button className="btn-arrows btn-transparent" type="button" onClick={() => this._handleClick(this.props.params.id, 'next')}>
             <svg className="svg-arrows" viewBox="0 0 8 14">
               <path
                 className="svg-black"
@@ -68,7 +73,7 @@ class PageDayView extends React.Component {
 
         { events }
 
-        <DayPagination {...this.props} onClick={this._handleClick} />
+        <DayPagination {...this.props} onHandleClick={this._handleClick} routeChange={this.routeChange} />
       </div>
     );
   }
