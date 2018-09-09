@@ -2,6 +2,7 @@ import { formatDate, addSubtract } from 'js-utils/formatDate';
 
 const theState = {
   appLoading: false,
+  globalError: null,
   categoryLoading: false,
   introContent: {
     title: null,

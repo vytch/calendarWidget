@@ -13,6 +13,13 @@
         width: 100%;
         border: 1px solid $input-border;
         border-radius: 0;
+
+        .ui.label {
+            background: $primary;
+            color: $white;
+            font-weight: normal;
+            font-size: 14px;
+        }
     }
 
     input,

@@ -35,6 +35,9 @@ export default function storeReducer(state = theState, action) {
     });
     break;
 
+  case actionTypes.SET_APPFAILED: return updateReducer({...state}, { globalError: action.data.message });
+    break;
+
   // Landing page calendar toggles
   //================================================================
   case actionTypes.TOGGLE_SEARCHING: return updateReducer({...state}, { isSearching: !state.isSearching });

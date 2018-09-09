@@ -14,6 +14,13 @@ export const setAllData = data => {
   };
 };
 
+export const setLoadingFailed = data => {
+  return {
+    type: actionTypes.SET_APPFAILED,
+    data,
+  };
+};
+
 export const setCategories = data => {
   return {
     type: actionTypes.SET_CATEGORIES,
@@ -66,6 +73,10 @@ export const getAllData = () => {
       };
       dispatch(setAllData(data));
       dispatch(setAppLoading(false));
-    }));
+    }))
+      .catch(err => {
+        console.log(err);
+        dispatch(setLoadingFailed(err));
+      });
   };
 };

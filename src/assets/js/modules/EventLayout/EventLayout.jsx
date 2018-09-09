@@ -27,6 +27,7 @@ class EventLayout extends React.Component {
     const pathname = this.props.location.pathname;
     const calendarButton = pathname === '/' || pathname === '/search' ? null : <CalendarBackButton />;
     const backButton = pathname === '/search-results' ? <SearchBackButton /> : calendarButton;
+    const errorTitle = <h1>`Ooops, there was an error getting the content:`</h1>;
     const children = this.props.appLoading ? <Loader /> : this.props.children;
 
     return (
@@ -34,7 +35,11 @@ class EventLayout extends React.Component {
         <Header />
         { backButton }
         <main className="wrapper">
-          { children }
+          {
+            this.props.globalError
+              ? <div className="align-center"><h2>Ooops, there was an error getting the content.</h2><p>Refresh the page to try again.</p></div>
+              : children
+          }
         </main>
       </div>
     );
@@ -42,6 +47,7 @@ class EventLayout extends React.Component {
 }
 
 EventLayout.defaultProps = {
+  globalError: null,
 };
 
 EventLayout.propTypes = {
@@ -51,11 +57,13 @@ EventLayout.propTypes = {
   location: PropTypes.object.isRequired,
   getAllData: PropTypes.func.isRequired,
   appLoading: PropTypes.bool.isRequired,
+  globalError: PropTypes.string,
 };
 
 const mapStateToProps = state => {
   return {
     appLoading: state.reducer.appLoading,
+    globalError: state.reducer.globalError,
   };
 };
 

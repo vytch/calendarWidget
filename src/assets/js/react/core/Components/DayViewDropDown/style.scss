@@ -16,6 +16,10 @@
             span{
                 font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
             }
+
+            .ui.label{
+                background: $primary;
+            }
         }
 
         .dropdown > span + i:before{

@@ -26,7 +26,8 @@ class DayView extends React.Component {
     this.props.router.push(`/day/${str}`);
   }
 
-  onRenderDay({ day, classNames, onPickDate }) {
+  onRenderDay = ({ day, classNames, onPickDate }) => {
+    // TODO: FINISH ADDING PUBLIC HOLIDAY CLASS
     return (
       <div
         role="button"
@@ -56,6 +57,8 @@ class DayView extends React.Component {
   }
 
   onRenderHeader({ onPrevMonth, onNextMonth }) { // removed date arg
+    const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    let i = 0;
     return (
       <header>
         <div className="Calendar-header">
@@ -85,13 +88,7 @@ class DayView extends React.Component {
         </div>
 
         <div className="Calendar-grid Calendar-grid-days">
-          <div className="Calendar-grid-item">S</div>
-          <div className="Calendar-grid-item">M</div>
-          <div className="Calendar-grid-item">T</div>
-          <div className="Calendar-grid-item">W</div>
-          <div className="Calendar-grid-item">T</div>
-          <div className="Calendar-grid-item">F</div>
-          <div className="Calendar-grid-item">S</div>
+          { days.map(day => <div key={`cgdays-${day}-${i += 1}`} className="Calendar-grid-item">{day}</div>) }
         </div>
       </header>
     );
@@ -103,6 +100,7 @@ class DayView extends React.Component {
   }
 
   render() {
+    console.log(this.props.publicHolidays);
     return (
       <div>
         <h3>MLC Calendar of events</h3>
@@ -164,12 +162,14 @@ DayView.propTypes = {
   selectedDate: PropTypes.string.isRequired,
   minMax: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
+  publicHolidays: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     selectedDate: state.reducer.selectedDate,
     minMax: state.reducer.minMax,
+    publicHolidays: state.reducer.publicHolidays,
   };
 };
 
